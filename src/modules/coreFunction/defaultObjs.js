@@ -1,13 +1,13 @@
 import {Project, Task, Tag} from './classes'
 import truth from './truth'
-
+import {addProject, editProject, addTask} from './basicFunction'
 
 function generateDefaults(){
-    const defaultProj = new Project("New Project", undefined, undefined, "Default project on initialize")
+    const defaultProj = new Project("Default Project", undefined, undefined,undefined, "Default project on initialize")
     truth.allProjects.push(defaultProj)
 
     for (let i = 0; i < 3; i++){
-        const defaultTask = new Task(`New Task ${i+1}`, undefined, undefined, "Default task on initialize", defaultProj.projectId)
+        const defaultTask = new Task(false, defaultProj.projectId, `New Task ${i+1}`,undefined, undefined, undefined, "Default task on initialize", defaultProj.projectId)
         truth.allTasks.push(defaultTask)
     }
 
