@@ -1,37 +1,49 @@
 import "./styles.css"
 import {Project, Task, Tag} from './modules/coreFunction/classes'
-import truth from './modules/coreFunction/truth'
+import registry from './modules/coreFunction/registry'
 import {generateDefaults} from './modules/coreFunction/defaultObjs'
 import {addProject, editProject, addTask, editTask, addTag, editTag,tagTask} from "./modules/coreFunction/basicFunction"
-
+import filter from './modules/coreFunction/filter'
 generateDefaults()
 
 const testProj = addProject()
-setTimeout(() => console.table(truth.allProjects)
-,2000)
+setTimeout(() => console.table(registry.allProjects)
+,1000)
 
 
 setTimeout(() => {
     editProject(testProj, 'testProj Name changed')
-},3000)
+},1500)
 
 const testAddTask = addTask(testProj)
 setTimeout(() => {
-    console.table(truth.allTasks)
-},4000)
+    console.table(registry.allTasks)
+},2000)
 
 setTimeout(() => {
     editTask(testAddTask, testProj, "task name changed")
-},5000)
+},2500)
 
 const testTag = addTag()
 setTimeout(() => { 
     editTag(testTag,"New edited name")
-},5000)
+},3000)
 
 setTimeout(() => { 
     tagTask(testAddTask,testTag)
-    tagTask(testAddTask,truth.allTags[0].tagId)
-},5500)
+    tagTask(testAddTask,registry.allTags[0].tagId)
+},3500)
 
+
+setTimeout(() => { 
+
+    console.table(filter.byTag(testTag))
+   
+},4000)
+
+setTimeout(() => { 
+    tagTask(testAddTask,'low')
+    console.table(filter.byTag('low'))
+   
+},4500)
 
