@@ -77,7 +77,7 @@ function editTag(tagId, name){
         console.log('works but something is wrong')
     }
 }
-
+//Internal
 function tagTask(taskId,tagId){
     const task = registry.allTasks.find(t => t.taskId === taskId)
     const tag = registry.allTags.find(t => t.tagId === tagId)
@@ -122,4 +122,4 @@ function tagOther(taskId,tagId){
     }
 }
 
-export {addProject, editProject, addTask, editTask, addTag, editTag,tagTask,tagUrgency,tagOther}
+export {addProject, editProject, addTask, editTask, addTag, editTag,tagUrgency,tagOther}
