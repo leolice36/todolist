@@ -17,8 +17,7 @@ function generateDefaults(){
     urgencyMed.tagId = 'medium'
     const urgencyLow = new Tag('Low','urgency')
     urgencyLow.tagId = 'low'
-    const defaultTag1 = new Tag('New Tag 1','other')
-    registry.allTags.push(urgencyHigh, urgencyMed, urgencyLow, defaultTag1)
+    registry.allTags.push(urgencyHigh, urgencyMed, urgencyLow)
     console.table(registry.allProjects)
     console.table(registry.allTasks)
     console.table(registry.allTags)

@@ -104,7 +104,7 @@ function tagTask(taskId,tagId){
 function tagUrgency(taskId,tagId){
     const tag = registry.allTags.find(t => t.tagId === tagId)
     if (tag.type === 'urgency'){
-        tagTask(taskId,tagId)
+        return tagTask(taskId,tagId)
     } else {
         console.log('not an urgency tag')
     }
@@ -116,8 +116,9 @@ function tagOther(taskId,tagId){
     if (tag.type === 'other'&&
         !task.tags.some(existingTag => existingTag.tagId === tagId)
     ){
-        tagTask(taskId,tagId)
+        return tagTask(taskId,tagId)
     } else {
+        console.table(tag)
         console.log('not an other tag')
     }
 }

@@ -6,44 +6,20 @@ import {addProject, editProject, addTask, editTask, addTag, editTag,tagUrgency,t
 import filter from './modules/coreFunction/filter'
 generateDefaults()
 
-const testProj = addProject()
-setTimeout(() => console.table(registry.allProjects)
-,1000)
-
+const testOtherTag1 = addTag('YAS')
+const testOtherTag2 = addTag('NAH')
+const testOtherTag3 = addTag('NOT USED')
+setTimeout(() => { 
+    tagOther(registry.allTasks[0].taskId,testOtherTag1)
+    tagOther(registry.allTasks[1].taskId,testOtherTag1)
+    tagOther(registry.allTasks[2].taskId,testOtherTag2)
+},1000)
 
 setTimeout(() => {
-    editProject(testProj, 'testProj Name changed')
+    console.log('here')
+    console.table(filter.byUrgency('medium'))
+    console.log('here')
 },1500)
 
-const testAddTask = addTask(testProj)
-setTimeout(() => {
-    console.table(registry.allTasks)
-},2000)
-
-setTimeout(() => {
-    editTask(testAddTask, testProj, "task name changed")
-},2500)
-
-const testTag = addTag()
-setTimeout(() => { 
-    editTag(testTag,"New edited name")
-},3000)
-
-setTimeout(() => { 
-    tagOther(testAddTask,testTag)
-    tagOther(testAddTask,registry.allTags[0].tagId)
-},3500)
-
-
-setTimeout(() => { 
-    console.log('from here')
-    console.table(filter.byTag(testTag))
-    console.log('to here')
-},4000)
-
-setTimeout(() => { 
-    tagUrgency(testAddTask,'low')
-    console.table(filter.byTag('low'))
-   
-},4500)
-
+//console.table(filter.byUrgency('high', filteredByOther)) DOUBLE filter works
+//I have to think how to implement this though
