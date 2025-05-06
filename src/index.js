@@ -6,26 +6,30 @@ import {addProject, editProject, addTask, editTask, addTag, editTag,tagUrgency,t
 import filter from './modules/coreFunction/filter'
 generateDefaults()
 
-const defaultProj = registry.allProjects[0]
+const defaultProj = registry.allProjects[0].projectId
 const testProj1= addProject("TESTPROJ1")
 const testTask1= addTask(testProj1, "TEST1task")
-const testTask2= addTask(testProj1, "TEST2task")
+const testTask2= addTask(defaultProj, "TEST2task")
+const testTask3= addTask(defaultProj, "TEST3task")
 const testTag1 = addTag('TEST1tag')
 const testTag2 = addTag('TEST2tag')
 setTimeout(() => { 
     tagOther(testTask1,testTag1)
     tagOther(testTask1,testTag2)
     tagOther(testTask2,testTag1)
+    tagOther(testTask3,testTag1)
+    tagOther(testTask3,testTag2)
     tagUrgency(testTask1,'high')
     tagUrgency(testTask2,'high')
+    tagUrgency(testTask3,'high')
 },1000)
 
 setTimeout(() => {
-    filter.filterObj.tagFilter.push(testTag1,testTag2)
+    filter.filterObj.tagFilter.push(testTag1)
+    filter.filterObj.projectFilter = testProj1;
     console.table(filter.filterObj)
-    console.table(filter.byProject(testProj1))
-    // const filteredArr = filter.filterAll(filter.filterObj)
-    // console.table(filteredArr)
+    const filteredArr = filter.filterAll(filter.filterObj)
+    console.table(filteredArr)
 },1500)
 
 //console.table(filter.byUrgency('high', filteredByOther)) DOUBLE filter works

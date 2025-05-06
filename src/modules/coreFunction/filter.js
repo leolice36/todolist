@@ -78,12 +78,12 @@ function filterAll(filterObject, taskArray = registry.allTasks){
   const filterObj = filterObject
   let filteredArr = []
   if (filterObj.projectFilter != 'none'){
-    
+    filteredArr = byProject(filterObj.projectFilter,taskArray)
   }
 
   //filters for urgency first passes on a filtered array
   if (filterObj.urgencyFilter != 'none'){
-    filteredArr = byUrgency(filterObj.urgencyFilter,taskArray)
+    filteredArr = byUrgency(filterObj.urgencyFilter,filteredArr)
   }
 
   //filters for tags next passes on a filtered array every loop
