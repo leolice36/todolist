@@ -17,6 +17,8 @@ editTask(testTask1,defaultProj,ISODate)
 
 console.table(registry.allTasks[0])
 
+
+
 // const testProj1= addProject("TESTPROJ1")
 // const testTask1= addTask(testProj1, "TEST1task")
 // const testTask2= addTask(defaultProj, "TEST2task")

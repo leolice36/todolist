@@ -8,5 +8,7 @@ module.exports = merge(common, {
     watchFiles: ["./src/template.html"],
     static: "./dist",
     hot: true,
+    open: true,
+    port: 8080, // Use a different port for sandbox
   },
 });
