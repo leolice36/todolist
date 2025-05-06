@@ -1,5 +1,12 @@
 import registry from './registry'
 
+const filterObj = {
+  isDone: false,
+  timeFilter:'none',
+  urgencyFilter: 'none',
+  tagFilter: {},
+}
+
 //Internal
 function byTag(tagId, taskArray = registry.allTasks) {
   console.table(taskArray)
@@ -44,4 +51,4 @@ function byOther(tagId,taskArray){
 }
 
 
-export default {byUrgency,byOther}
+export default {byUrgency,byOther,filterObj}
