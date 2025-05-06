@@ -8,11 +8,12 @@ class Project {
         // this.taskIdArr = [] //Ids of task in this project
         // this.tags = [] //Ids of project tags in this project NOT SURE IF NEEDED
         this.projectId = crypto.randomUUID();
+        this.color = '';
     }
 }
 
 class Task {
-    constructor(isDone, projectId = "default", name,makeDate, doDate, dueDate, description){
+    constructor(isDone, projectId, name,makeDate, doDate, dueDate, description){
         this.isDone = isDone
         this.projectId = projectId //Id of associated project
         this.name = name;
@@ -22,6 +23,7 @@ class Task {
         this.description = description;
         this.tags = [] //Ids of tasks tags in this project
         this.taskId = crypto.randomUUID();
+        this.color = '';
     }
 }
 
@@ -33,6 +35,7 @@ class Tag {
         this.name = name;
         this.type = type; //urgency or other
         this.tagId = crypto.randomUUID();
+        this.color = '';
     }
 }
 
