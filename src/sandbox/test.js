@@ -20,9 +20,20 @@ function editTask(taskId, changesArr){
     
     return task.taskId
 }
-
+function editProject(projectId, changesArr) {
+    const proj = registry.allProjects.find(p => p.projectId === projectId)
+    if (proj.projectId === 'undefined'){
+        console.log('Invalid project ID')
+        return
+    } else {
+        Object.assign(proj, changesArr)
+        console.table(proj)
+        console.table(registry.allTasks)
+        return proj.projectId
+    }
+}
 
 function sandboxTestConsole(){
     console.log('console is attached')
 }
-export default {editTask,sandboxTestConsole}
+export default {editTask,sandboxTestConsole,editProject}

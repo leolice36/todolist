@@ -6,15 +6,25 @@ import testScript from './test'
 generateDefaults()
 
 
-const changes = {
+const taskChanges = {
     isDone: true,
     name:'name changed',
     // projectId: 'NICE',
     // makeDate:,
     // doDate,
     // dueDate,
-    // description: 'description change',
+    description: 'description change',
+}
+
+const projChanges = {
+    name: 'EDIT DEFAULT',
+    // makeDate
+    // startDate 
+    // endDate 
+    description: "WORKS",
 }
 
 const testTask1 = registry.allTasks[0].taskId
-testScript.editTask(testTask1,changes)
+const defaultProj = registry.allProjects[0].projectId
+editTask(testTask1,taskChanges)
+editProject(defaultProj,projChanges)

@@ -6,19 +6,15 @@ function addProject(name = "New Project", makeDate = undefined, startDate=undefi
     return newProj.projectId
 }
 
-function editProject(projectId, name, makeDate, startDate, endDate, description) {
+function editProject(projectId, changesArr) {
     const proj = registry.allProjects.find(p => p.projectId === projectId)
     if (proj.projectId === 'undefined'){
         console.log('Invalid project ID')
         return
     } else {
-        proj.name = name;
-        proj.makeDate = makeDate;
-        proj.startDate = startDate;
-        proj.endDate = endDate;
-        proj.description = description;
+        Object.assign(proj, changesArr)
         console.table(proj)
-        console.table(registry.allProjects)
+        console.table(registry.allTasks)
         return proj.projectId
     }
 }
@@ -30,26 +26,21 @@ function addTask(projectId, name = "New Task", makeDate = undefined, startDate =
     return newTask.taskId
 }
 
-function editTask(taskId, projectId, name,makeDate, doDate, dueDate, description){
+function editTask(taskId, changesArr){
     const task = registry.allTasks.find(t => t.taskId === taskId)
     if (task.taskId === undefined){
         console.log('Invalid task ID')
         return
     } else if (
-        registry.allProjects.some(proj => proj.projectId === projectId) &&
+        registry.allProjects.some(proj => proj.projectId === task.projectId) &&
         registry.allTasks.some(task => task.taskId === taskId)
     ){
-        task.projectId = projectId;
-        task.name = name;
-        task.makeDate = makeDate;
-        task.doDate = doDate;
-        task.dueDate = dueDate;
-        task.description = description;
+        Object.assign(task, changesArr)
         console.table(task)
-        console.table(registry.allTasks)
     } else {
-        console.log(registry.allProjects.includes(projectId))
+        console.log(registry.allProjects.includes(task.projectId))
         console.log('works but something is wrong')
+        console.log(changesArr.projectId)
     }
     
     return task.taskId

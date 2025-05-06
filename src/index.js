@@ -7,15 +7,39 @@ import filter from './modules/coreFunction/filter'
 import {formatISO} from 'date-fns'
 generateDefaults()
 
+
+const taskChanges = {
+    isDone: true,
+    name:'name changed',
+    // projectId: 'NICE',
+    // makeDate:,
+    // doDate,
+    // dueDate,
+    description: 'description change',
+}
+
+const projChanges = {
+    name: 'EDIT DEFAULT',
+    // makeDate
+    // startDate 
+    // endDate 
+    description: "WORKS",
+}
+
+const testTask1 = registry.allTasks[0].taskId
 const defaultProj = registry.allProjects[0].projectId
-const testTask1= registry.allTasks[0].taskId
-console.table(registry.allTasks[0])
-const testDate = new Date('2025,6,10')
-const ISODate = formatISO(testDate)
+editTask(testTask1,taskChanges)
+editProject(defaultProj,projChanges)
 
-editTask(testTask1,defaultProj,ISODate)
+// const defaultProj = registry.allProjects[0].projectId
+// const testTask1= registry.allTasks[0].taskId
+// console.table(registry.allTasks[0])
+// const testDate = new Date('2025,6,10')
+// const ISODate = formatISO(testDate)
 
-console.table(registry.allTasks[0])
+// editTask(testTask1,defaultProj,ISODate)
+
+// console.table(registry.allTasks[0])
 
 
 
