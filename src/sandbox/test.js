@@ -1,23 +1,21 @@
-function editTask(taskId, projectId, name,makeDate, doDate, dueDate, description){
+import registry from '../modules/coreFunction/registry'
+
+
+function editTask(taskId, changesArr){
     const task = registry.allTasks.find(t => t.taskId === taskId)
     if (task.taskId === undefined){
         console.log('Invalid task ID')
         return
     } else if (
-        registry.allProjects.some(proj => proj.projectId === projectId) &&
+        registry.allProjects.some(proj => proj.projectId === task.projectId) &&
         registry.allTasks.some(task => task.taskId === taskId)
     ){
-        task.projectId = projectId;
-        task.name = name;
-        task.makeDate = makeDate;
-        task.doDate = doDate;
-        task.dueDate = dueDate;
-        task.description = description;
+        Object.assign(task, changesArr)
         console.table(task)
-        console.table(registry.allTasks)
     } else {
-        console.log(registry.allProjects.includes(projectId))
+        console.log(registry.allProjects.includes(task.projectId))
         console.log('works but something is wrong')
+        console.log(changesArr.projectId)
     }
     
     return task.taskId
