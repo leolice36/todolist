@@ -12,6 +12,11 @@ generateDefaults()
 const randomTask1 = registry.allTasks[0]
 const randomTask2 = registry.allTasks[1]
 const randomTask3 = registry.allTasks[2]
+// const addedProj1 = addProject('Extra')
+// const addedTask1 = addTask(addedProj1,'X Task')
+// const addedTag1 = addTag('X Tag')
+// tagOther(addedTask1,addedTag1)
+// tagUrgency(addedTask1,'high')
 const date = new Date()
 const changesArr1 = {
     doDate: formatISO(addDays(date,1))
@@ -28,5 +33,8 @@ const changesArr3 = {
 editTask(randomTask1.taskId, changesArr1)
 editTask(randomTask2.taskId, changesArr2)
 editTask(randomTask3.taskId, changesArr3)
-const testFiltered = filter.byDate('tomorrow','dueDate')
-console.table(testFiltered)
+tagUrgency(randomTask1.taskId,'high')
+setTimeout(() => {
+    const testFiltered = filter.filterAll(filter.filterObj)
+    console.table(testFiltered)
+}, 1000)

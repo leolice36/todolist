@@ -3,8 +3,12 @@ import { subDays, addDays, formatISO, parseISO, isToday, isTomorrow, isThisWeek,
 
 const filterObj = {
   isDone: false,
-  timeFilter:'none',
-  urgencyFilter: 'high',
+  timeFilter:
+  {
+    period: 'thisWeek',
+    dateType: 'doDate'
+  },
+  urgencyFilter: 'none',
   tagFilter: [],
   projectFilter: 'none',
 }
@@ -80,24 +84,26 @@ function byDate(period,dateType,arrayOfTasks = registry.allTasks){
   let filteredArr;
   switch (period){
       case 'today':
-          filteredArr = arrayOfTasks.filter(task => isToday(parseISO(task[dateType])));
+          filteredArr = arrayOfTasks.filter(task => {return isToday(parseISO(task[dateType]))});
           break
       case 'tomorrow':
-          filteredArr = arrayOfTasks.filter(task => isTomorrow(parseISO(task[dateType])));
+          filteredArr = arrayOfTasks.filter(task => {return isTomorrow(parseISO(task[dateType]))});
           break
       case 'thisWeek':
-          filteredArr = arrayOfTasks.filter(task => isThisWeek(parseISO(task[dateType]), { weekStartsOn: 1 })); // Monday start
+          filteredArr = arrayOfTasks.filter(task => {return isThisWeek(parseISO(task[dateType]), { weekStartsOn: 1 })}
+          ); // Monday start
           break
       case 'thisMonth':
-          filteredArr = arrayOfTasks.filter(task => isThisMonth(parseISO(task[dateType])));
+          filteredArr = arrayOfTasks.filter(task => {return isThisMonth(parseISO(task[dateType]))});
           break
       case 'past':
-          filteredArr = arrayOfTasks.filter(task => isPast(parseISO(task[dateType])));
+          filteredArr = arrayOfTasks.filter(task => {return isPast(parseISO(task[dateType]))});
           break
   } 
+  
   if (filteredArr.length > 0){
     return filteredArr
-  } else if (filteredArr.length === 0){
+  } else if (filteredArr.length == 0){
     return 'NO RESULTS'
   } else {
     return "something might be wrong"
@@ -107,28 +113,30 @@ function byDate(period,dateType,arrayOfTasks = registry.allTasks){
 
 function filterAll(filterObject, taskArray = registry.allTasks){
   const filterObj = filterObject
-  let filteredArr = []
+  let filteredArr = taskArray
   if (filterObj.projectFilter != 'none'){
     filteredArr = byProject(filterObj.projectFilter,taskArray)
   }
-
-  //filters for urgency first passes on a filtered array
+  // filters for urgency first passes on a filtered array
   if (filterObj.urgencyFilter != 'none'){
     filteredArr = byUrgency(filterObj.urgencyFilter,filteredArr)
   }
-
-  //filters for tags next passes on a filtered array every loop
+  // filters for tags next passes on a filtered array every loop
   if (filterObj.tagFilter.length > 0){
     for (let tagID of filterObj.tagFilter){
-      console.log(tagID)
       filteredArr = byOther(tagID,filteredArr)
     }
   }
-
-  if (filteredArr=== undefined){
+  if (filterObj.timeFilter != 'none'){
+    console.table(filteredArr)
+    console.log(`PERIOD: ${filterObj.timeFilter.period}`)
+    console.log(`DATETYPE: ${filterObj.timeFilter.dateType}`)
+    filteredArr = byDate(filterObj.timeFilter.period, filterObj.timeFilter.dateType,filteredArr)
+    console.log(`FILTEREDARR: ${filteredArr}`)
+  }
+  if (filteredArr === undefined || filteredArr.length <= 0){
     return 'NO RESULTS'
   } else {
-    console.log(filteredArr)
     return filteredArr
   }
 }
