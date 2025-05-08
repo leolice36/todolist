@@ -1,13 +1,17 @@
 import {Project, Task, Tag} from './classes'
 import registry from './registry'
 import {addProject, editProject, addTask} from './basicFunction'
+import { formatISO, parseISO, isToday, isTomorrow, isThisWeek, isThisMonth, isPast } from 'date-fns';
 
 function generateDefaults(){
-    const defaultProj = new Project("Default Project", undefined, undefined,undefined, "Default project on initialize")
+    const today = new Date()
+    const todayISO = formatISO(today)
+    const defaultProj = new Project("Random", todayISO, todayISO,undefined, "Default project on initialize")
+    defaultProj.projectId = 'random'
     registry.allProjects.push(defaultProj)
 
     for (let i = 0; i < 3; i++){
-        const defaultTask = new Task(false, defaultProj.projectId, `New Task ${i+1}`,undefined, undefined, undefined, "Default task on initialize", defaultProj.projectId)
+        const defaultTask = new Task(false, defaultProj.projectId, `New Task ${i+1}`, todayISO, todayISO, todayISO, "Default task on initialize", defaultProj.projectId)
         registry.allTasks.push(defaultTask)
     }
 
