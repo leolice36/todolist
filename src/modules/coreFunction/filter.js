@@ -5,7 +5,7 @@ const filterObj = {
   isDone: false,
   timeFilter:
   {
-    period: 'thisWeek',
+    period: 'thisMonth',
     dateType: 'doDate'
   },
   urgencyFilter: 'none',
@@ -84,20 +84,40 @@ function byDate(period,dateType,arrayOfTasks = registry.allTasks){
   let filteredArr;
   switch (period){
       case 'today':
-          filteredArr = arrayOfTasks.filter(task => {return isToday(parseISO(task[dateType]))});
+          filteredArr = arrayOfTasks.filter(task => {
+            if (task[dateType]){
+              return isToday(parseISO(task[dateType]))  
+              }
+            });
           break
       case 'tomorrow':
-          filteredArr = arrayOfTasks.filter(task => {return isTomorrow(parseISO(task[dateType]))});
+          filteredArr = arrayOfTasks.filter(task => {
+            if (task[dateType]){
+            return isTomorrow(parseISO(task[dateType]))
+            }
+          });
           break
       case 'thisWeek':
-          filteredArr = arrayOfTasks.filter(task => {return isThisWeek(parseISO(task[dateType]), { weekStartsOn: 1 })}
+          filteredArr = arrayOfTasks.filter(task => {
+            if (task[dateType]){
+              return isThisWeek(parseISO(task[dateType]), { weekStartsOn: 1 })
+            }
+          }
           ); // Monday start
           break
       case 'thisMonth':
-          filteredArr = arrayOfTasks.filter(task => {return isThisMonth(parseISO(task[dateType]))});
+          filteredArr = arrayOfTasks.filter(task => {
+            if (task[dateType]){
+            return isThisMonth(parseISO(task[dateType]))
+            }
+          });
           break
       case 'past':
-          filteredArr = arrayOfTasks.filter(task => {return isPast(parseISO(task[dateType]))});
+          filteredArr = arrayOfTasks.filter(task => {
+            if (task[dateType]){
+            return isPast(parseISO(task[dateType]))
+            }
+          });
           break
   } 
   
