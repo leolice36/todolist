@@ -5,7 +5,7 @@ const filterObj = {
   isDone: false,
   timeFilter:
   {
-    period: 'thisMonth',
+    period: 'tomorrow',
     dateType: 'doDate'
   },
   urgencyFilter: 'none',
@@ -130,7 +130,14 @@ function byDate(period,dateType,arrayOfTasks = registry.allTasks){
   }
 }
 
-
+function byIsDone(taskArray = registry.allTasks, condition){
+  const filteredArr = taskArray.filter(task => task.isDone === condition);
+    if (filteredArr.length > 0){
+      return filteredArr
+    } else {
+      console.log(`Nothing DONE`)
+    }
+}
 function filterAll(filterObject, taskArray = registry.allTasks){
   const filterObj = filterObject
   let filteredArr = taskArray
@@ -148,12 +155,13 @@ function filterAll(filterObject, taskArray = registry.allTasks){
     }
   }
   if (filterObj.timeFilter != 'none'){
-    console.table(filteredArr)
-    console.log(`PERIOD: ${filterObj.timeFilter.period}`)
-    console.log(`DATETYPE: ${filterObj.timeFilter.dateType}`)
     filteredArr = byDate(filterObj.timeFilter.period, filterObj.timeFilter.dateType,filteredArr)
-    console.log(`FILTEREDARR: ${filteredArr}`)
   }
+
+  if (filterObj.isDone != 'none'){
+    filteredArr = byIsDone(filteredArr,filterObj.isDone)
+  }
+
   if (filteredArr === undefined || filteredArr.length <= 0){
     return 'NO RESULTS'
   } else {
