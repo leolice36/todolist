@@ -6,6 +6,9 @@ body {
   animation: breathe 20s ease-in-out infinite;
 }
 
+body * {
+  margin: 4px;
+}
 .main-container {
   height: 100vh;
   width: 100vw;
@@ -34,7 +37,6 @@ body {
   background: #feb47b;
   display: flex;
   align-items: flex-start;
-  margin: 10px;
 }
 
 .project-header > button {
@@ -45,30 +47,53 @@ body {
   background-color: #91eae4;
   display: grid;
   grid-template-rows: 40px 1fr;
-  margin: 10px;
 }
 
 .all-projects-container{
   background-color: #ff7e5f;
-  margin: 10px;
 }
 
 .project-list{
   background-color: #86a8e7;
-  margin: 10px;
   display: grid;
   grid-auto-rows: 30px;
   overflow-y: auto;
 }
 .project{
   background-color: white;
-  margin: 5px;
 }
-
-
 
 .tasks-main {
   background: rgb(144, 236, 254);
   grid-area: tasks;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 100px 100px 1fr;
+  grid-template-areas: 
+  'header header'
+  'filter filter'
+  'list details'
+  ;
+}
+
+.task-header{
+  background: #9ffacb;
+  display: flex;
+  align-items: flex-start;
+  grid-area: header;
+}
+
+.filter-container{
+  background: #cdb904;
+  grid-area: filter;
+}
+
+.task-list-container{
+  background: #04cdc3;
+  grid-area: list;
+}
+.task-details-container{
+  background: #5104cd;
+  grid-area: details;
 }
 
