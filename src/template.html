@@ -3,14 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
     <title>To-do List MAIN</title>
 </head>
 <body>
     <main class="main-container">
-        <header class="page-header"></header>
+        <header class="page-header">
+            <h1>TODO</h1>
+        </header>
         <section class="projects-main">
             <div class="project-header">
-                <div class="project-header-title">Project</div>
+                <h3 class="project-header-title">Project</h3>
                 <button class="add-project">+</button>
             </div>
             <div class="project-list-container">
@@ -31,10 +36,49 @@
         </section>
         <section class="tasks-main">
             <div class="task-header">
-                <div class="task-header-title">Tasks</div>
+                <h3 class="task-header-title">Tasks</h3>
                 <button class="add-task">+</button>
             </div>
-            <div class="filter-container"></div>
+            <div class="filter-container">
+                <div class="filter-header-container">
+                    <h5>filter</h5>
+                </div>
+                <div class="filters">
+                    <div class="show-completed-container">
+                        <button 
+                            type="button" class="example-switchbox" 
+                            data-toggle-class="is-pressed" 
+                            id="show-comp-toggle" 
+                            aria-pressed="false" 
+                            title="Toggle this box">
+
+                                <span class="example-switchbox-yes">yes</span>
+                                <span class="example-switchbox-no">no</span>
+                                <span class="sr-only">Toggle</span>
+                        </button>
+                        <label for="show-comp-toggle">SHOW COMPLETED</label>
+                    </div>
+                    <div class="do-due-container">
+                        <div class="do-due-toggle-container">
+                            <button 
+                            type="button" class="example-switchbox" 
+                            data-toggle-class="is-pressed" 
+                            id="do-due-toggle" 
+                            aria-pressed="false" 
+                            title="Toggle this box">
+
+                                <span class="example-switchbox-yes">due</span>
+                                <span class="example-switchbox-no">do</span>
+                                <span class="sr-only">Toggle</span>
+                            </button>
+                        </div>
+                        <div class="do-due-dropdown-container">
+                            
+                        </div>
+                    </div>
+                    <div class="tags-container">a</div>
+                </div>
+            </div>
             <div class="task-list-container">
                 <div class="task-list"></div>
             </div>

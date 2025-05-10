@@ -8,12 +8,13 @@ body {
 
 body * {
   margin: 4px;
+  font-family: "Quicksand", sans-serif;
 }
 .main-container {
   height: 100vh;
   width: 100vw;
   display: grid; 
-  grid-template-columns: 300px 1fr;
+  grid-template-columns: 150px 1fr;
   grid-template-rows: 100px 1fr;
   grid-template-areas: 
     'header header'
@@ -86,8 +87,38 @@ body * {
 .filter-container{
   background: #cdb904;
   grid-area: filter;
+  display: grid;
+  grid-template-columns: 40px 1fr;
 }
 
+.filter-header-container{
+  background-color: grey;
+}
+
+.filters{
+  background-color: rgb(73, 94, 58);
+  display: flex;
+}
+
+.show-completed-container{
+  background-color: rgb(255, 255, 255);
+  display: grid;
+}
+.show-completed-container > .toggle {
+  background-color: #86a8e7;
+}
+
+.show-completed{
+  background-color: #86a8e7;
+}
+
+.do-due-toggle-container{
+  background-color: rgb(255, 255, 255);
+}
+
+.tags-container{
+  background-color: rgb(255, 255, 255);
+}
 .task-list-container{
   background: #04cdc3;
   grid-area: list;

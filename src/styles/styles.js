@@ -1,3 +1,4 @@
 import './main.css'
 import './reset.css'
 import './animations.css'
+import './components/switchbox.css'
