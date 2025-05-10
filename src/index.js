@@ -5,7 +5,6 @@ import {generateDefaults} from './modules/coreFunction/defaultObjs'
 import {addProject, editProject, addTask, editTask, addTag, editTag,tagUrgency,tagOther} from "./modules/coreFunction/basicFunction"
 import filter from './modules/coreFunction/filter'
 import { subDays, addDays, formatISO, parseISO, isToday, isTomorrow, isThisWeek, isThisMonth, isPast } from 'date-fns';
-import easyToggle from 'easy-toggle-state'
 generateDefaults()
 
 
@@ -55,3 +54,12 @@ setTimeout(() => {
     const testFiltered = filter.filterAll(filterObj)
     console.table(testFiltered)
 }, 1000)
+
+
+import easyToggle from "easy-toggle-state";
+
+const handler = () => {
+	easyToggle();
+	document.removeEventListener("DOMContentLoaded", handler);
+};
+document.addEventListener("DOMContentLoaded", handler);

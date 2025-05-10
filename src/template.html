@@ -17,7 +17,7 @@
             <div class="project-header">
                 <h3 class="project-header-title">Project</h3>
                 <button class="add-project">+</button>
-            </div>
+            </div class='project-dynamic-container'>
             <div class="project-list-container">
                 <div class="all-projects-container">
                     <div>ALL PROJECTS</div>
@@ -30,6 +30,22 @@
                     <div class="project">Project 3</div>
                     <div class="project">Project 3</div>
                     <div class="project">Project 3</div>
+                </div>
+            </div>
+            <div class="project-details">
+                <div class="project-details-header">New Project</div>
+                <div class="start-date">
+                    <div>Start Date</div>
+                    <div class="state-date-value">April 25, 2026</div>
+                </div>
+                <div class="end-date">
+                    <div>End Date</div>
+                    <div class="end-date-value">December 25, 2029</div>
+                </div>
+                <div class="project-description">
+                    <div>Description</div>
+                    <div> orem Ipsum is section make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was 
+                    </div>
                 </div>
             </div>
             </div>
@@ -73,16 +89,76 @@
                             </button>
                         </div>
                         <div class="do-due-dropdown-container">
-                            
+                            <div class="example-dropdown">
+                                <button type="button" class="example-dropdown-button" 
+                                    data-toggle-class="is-open" 
+                                    data-toggle-target-next="" 
+                                    data-toggle-outside="" 
+                                    data-toggle-escape="">
+                                            Today
+                                        </button>
+                                    <ul class="example-dropdown-list" data-toggle-state="false">
+                                    <li>
+                                        <button type="button" data-toggle-trigger-off="">
+                                            Tomorrow
+                                        </button>
+                                    </li>
+                                    <li>
+                                        <button type="button" data-toggle-trigger-off="">
+                                            This Week
+                                        </button>
+                                    </li>
+                                    <li>
+                                        <button type="button" data-toggle-trigger-off="">
+                                            This Month
+                                        </button>
+                                    </li>
+                                    <li>
+                                        <button type="button" data-toggle-trigger-off="">
+                                            Past
+                                        </button>
+                                    </li>
+                                </ul>
+                            </div>                                
                         </div>
                     </div>
-                    <div class="tags-container">a</div>
+                    <div class="tags-container">
+                        <div class="tags-label">TAGS</div>
+                        <div class="tags-area"></div>
+                    </div>
                 </div>
             </div>
             <div class="task-list-container">
-                <div class="task-list"></div>
+                <div class="task-list">
+                    <div class="task">Task 1</div>
+                    <div class="task">Task 2</div>
+                    <div class="task">Task 3</div>
+                    <div class="task">Task 4</div>
+                </div>
             </div>
-            <div class="task-details-container"></div>
+            <div class="task-details-container">
+                <div class="name-container">
+                    <div class="task-name">Task 2</div>
+                    <div class="project-name">Project 1</div>
+                </div>
+                <div class="urgency-container">
+                    <div class="urgency-label">Urgency</div>
+                    <div class="urgency-level">HIGH</div>
+                </div>
+                <div class="dates-container"></div>
+                <div class="tags-container">
+                    <div class="tags-label">TAGS</div>
+                    <button class="add-tag">+</button>
+                    <div class="tags-area"></div>
+                </div>
+                <div class="notes-container">
+                    <div class="notes-header">NOTES</div>
+                    <div class="notes-area">
+                        orem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was 
+                    </div>
+                </div>
+                <div></div>
+            </div>
         </section>
     </main>
 </body>

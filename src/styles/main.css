@@ -14,7 +14,7 @@ body * {
   height: 100vh;
   width: 100vw;
   display: grid; 
-  grid-template-columns: 150px 1fr;
+  grid-template-columns: 200px 1fr;
   grid-template-rows: 100px 1fr;
   grid-template-areas: 
     'header header'
@@ -69,7 +69,7 @@ body * {
   grid-area: tasks;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: 100px 100px 1fr;
+  grid-template-rows: 100px 150px 1fr;
   grid-template-areas: 
   'header header'
   'filter filter'
@@ -112,19 +112,90 @@ body * {
   background-color: #86a8e7;
 }
 
+label[for='show-comp-toggle']{
+  font-size: small;
+}
+
 .do-due-toggle-container{
   background-color: rgb(255, 255, 255);
 }
 
 .tags-container{
   background-color: rgb(255, 255, 255);
+  width: 300px;
+  display: flex;
+}
+
+.tags-label{
+  background: #04cdc3;
+}
+.tags-area {
+  background: #5104cd;
+  width: 200px;
 }
 .task-list-container{
   background: #04cdc3;
   grid-area: list;
 }
+.task-list {
+  background: white;
+  display: grid;
+  grid-auto-rows: 50px;
+}
+
+.task {
+  color: white;
+  background: black;
+}
 .task-details-container{
   background: #5104cd;
   grid-area: details;
 }
+.name-container {
+  background-color: #cdb904;
+}
+.urgency-container {
+  background-color: white;
+  display: flex;
+}
+.urgency-level {
+  background-color: red;
+}
 
+.tags-container > button{
+  background-color: #cdb904;
+}
+
+.notes-container{
+  background-color: black;
+}
+.notes-header {
+  background-color: #9ffacb;
+}
+
+.notes-area {
+  background-color: white;
+}
+
+.project-details{
+  background-color: white;
+}
+
+.project-details-header {
+  background: #cdb904;
+}
+.start-date{
+  display: flex;
+  background-color: #5104cd;
+}
+.end-date{
+  display: flex;
+  background-color: #0454cd;
+}
+.project-description{
+  background-color: #fcf7ce;
+}
+.project-description :first-child {
+  background-color: black;
+  color: white;
+}
