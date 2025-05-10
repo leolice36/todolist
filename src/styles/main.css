@@ -18,17 +18,56 @@ body {
   ;
 }
 
-#page-header {
+.page-header {
   background: rgb(139, 139, 139);
   grid-area: header;
 }
 
-#projects-main {
+.projects-main {
   background: rgb(63, 35, 35);
   grid-area: projects;
+  display: grid;
+  grid-template-rows: 100px 1fr;
 }
 
-#tasks-main {
+.project-header{
+  background: #feb47b;
+  display: flex;
+  align-items: flex-start;
+  margin: 10px;
+}
+
+.project-header > button {
+  flex-grow: 0;
+}
+
+.project-list-container{
+  background-color: #91eae4;
+  display: grid;
+  grid-template-rows: 40px 1fr;
+  margin: 10px;
+}
+
+.all-projects-container{
+  background-color: #ff7e5f;
+  margin: 10px;
+}
+
+.project-list{
+  background-color: #86a8e7;
+  margin: 10px;
+  display: grid;
+  grid-auto-rows: 30px;
+  overflow-y: auto;
+}
+.project{
+  background-color: white;
+  margin: 5px;
+}
+
+
+
+.tasks-main {
   background: rgb(144, 236, 254);
   grid-area: tasks;
 }
