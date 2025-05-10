@@ -1,4 +1,4 @@
-import "./styles.css"
+import "./styles/styles"
 import {Project, Task, Tag} from './modules/coreFunction/classes'
 import registry from './modules/coreFunction/registry'
 import {generateDefaults} from './modules/coreFunction/defaultObjs'

@@ -5,8 +5,6 @@ class Project {
         this.startDate = startDate;
         this.endDate = endDate;
         this.description = description;
-        // this.taskIdArr = [] //Ids of task in this project
-        // this.tags = [] //Ids of project tags in this project NOT SURE IF NEEDED
         this.projectId = crypto.randomUUID();
         this.color = '';
     }
