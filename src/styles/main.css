@@ -6,3 +6,30 @@ body {
   animation: breathe 20s ease-in-out infinite;
 }
 
+.main-container {
+  height: 100vh;
+  width: 100vw;
+  display: grid; 
+  grid-template-columns: 300px 1fr;
+  grid-template-rows: 100px 1fr;
+  grid-template-areas: 
+    'header header'
+    'projects tasks'
+  ;
+}
+
+#page-header {
+  background: rgb(139, 139, 139);
+  grid-area: header;
+}
+
+#projects-main {
+  background: rgb(63, 35, 35);
+  grid-area: projects;
+}
+
+#tasks-main {
+  background: rgb(144, 236, 254);
+  grid-area: tasks;
+}
+
