@@ -5,9 +5,10 @@ import {removeTag, addProject, editProject, addTask, editTask, addTag, editTag,t
 import testScript from './test'
 import { parseISO, isToday, isTomorrow, isThisWeek, isThisMonth, isPast } from 'date-fns';
 // generateDefaults()
+import htmlGenerator from "../modules/htmlGenerator"
 
 
-testScript.generateTagSectionInTask(registry.allTags,'task-1')
+htmlGenerator.generateTagSectionInTask(registry.allTags,'task-1')
 
 
 
