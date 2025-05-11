@@ -3,7 +3,7 @@ body {
     height: 100vh;
     background: linear-gradient(270deg, #000000, #000000, #ffffff, #898989);
     background-size: 800% 800%;
-    animation: breathe 20s ease-in-out infinite;
+    /* animation: breathe 20s ease-in-out infinite; */
   }
   @keyframes breathe {
     0% {

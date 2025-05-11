@@ -16,6 +16,7 @@
     "sandbox": "webpack serve --config webpack.sandbox.js"
   },
   "dependencies": {
+    "choices.js": "^11.1.0",
     "date-fns": "^4.1.0",
     "easy-toggle-state": "^1.16.0"
   }
