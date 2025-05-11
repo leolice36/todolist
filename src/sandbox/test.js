@@ -3,7 +3,6 @@ import {removeTag, addProject, editProject, addTask, editTask, addTag, editTag,t
 
 
 function generateTagSectionInTask(tagsArr,taskId){
-  const task = registry.allTasks.find(t => t.taskId === taskId)
   console.log(taskId)
   const tagSelect = document.createElement('select');
   tagSelect.id = 'tag-select';
@@ -21,6 +20,11 @@ function generateTagSectionInTask(tagsArr,taskId){
 
   document.body.appendChild(tagSelect)
 
+  setupAddRemoveEventListeners(taskId,tagSelect)
+}
+
+function setupAddRemoveEventListeners(taskId,tagSelect){
+  const task = registry.allTasks.find(t => t.taskId === taskId)
   tagSelect.addEventListener('addItem', function(event){
     const tagId = event.detail.value
     const tag = registry.allTags.find(t => t.tagId === tagId)
