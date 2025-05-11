@@ -71,4 +71,16 @@ function generateProjectList(projectsArr){
         projectList.appendChild(projectDiv)
     })
 }
-export default {generateTagSectionInTask,generateTagSectionInFIlter,generateProjectList}
+
+function generateTaskList(tasksArr){
+    const tasksList = document.querySelector('.task-list')
+    console.table(tasksArr)
+    tasksArr.forEach(task => {
+        const taskDiv = document.createElement('div')
+        taskDiv.textContent = task.name
+        taskDiv.dataset.taskId = task.taskId
+        taskDiv.classList.add('task') 
+        tasksList.appendChild(taskDiv)
+    })
+}
+export default {generateTagSectionInTask,generateTagSectionInFIlter,generateProjectList,generateTaskList}

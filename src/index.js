@@ -11,6 +11,7 @@ generateDefaults()
 htmlGenerator.generateTagSectionInTask(registry.allTags,'task-1')
 htmlGenerator.generateTagSectionInFIlter(registry.allTags)
 htmlGenerator.generateProjectList(registry.allProjects)
+htmlGenerator.generateTaskList(registry.allTasks)
 // const randomTask1 = registry.allTasks[0]
 // const randomTask2 = registry.allTasks[1]
 // const randomTask3 = registry.allTasks[2]
