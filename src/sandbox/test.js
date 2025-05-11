@@ -1,5 +1,5 @@
 import registry from '../modules/coreFunction/registry'
-import {addProject, editProject, addTask, editTask, addTag, editTag,tagUrgency,tagOther} from "../modules/coreFunction/basicFunction"
+import {removeTag, addProject, editProject, addTask, editTask, addTag, editTag,tagUrgency,tagOther} from "../modules/coreFunction/basicFunction"
 
 
 function generateTagSectionInTask(tagsArr,taskId){
@@ -37,7 +37,18 @@ function generateTagSectionInTask(tagsArr,taskId){
     })
 
   tagSelect.addEventListener('removeItem', function(event){
+    const tagId = event.detail.value
+    const tag = registry.allTags.find(t => t.tagId === tagId)
     console.log(event.detail.value, 'tag removed from', task.name)
+    if (tag.type === 'other'){
+      removeTag(taskId,tagId)
+      console.log(tag)
+    } else if (tag.type === 'urgency'){
+      console.log('Urgency is not handled here')
+      console.log(tag)
+    } else {
+      console.log('something is wrong')
+    }
     })
 }
   

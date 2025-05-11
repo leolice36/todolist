@@ -1,7 +1,7 @@
 import "./styles.css"
 import registry from '../modules/coreFunction/registry'
 import {generateDefaults} from '../modules/coreFunction/defaultObjs'
-import {addProject, editProject, addTask, editTask, addTag, editTag,tagUrgency,tagOther} from "../modules/coreFunction/basicFunction"
+import {removeTag, addProject, editProject, addTask, editTask, addTag, editTag,tagUrgency,tagOther} from "../modules/coreFunction/basicFunction"
 import testScript from './test'
 import { parseISO, isToday, isTomorrow, isThisWeek, isThisMonth, isPast } from 'date-fns';
 // generateDefaults()

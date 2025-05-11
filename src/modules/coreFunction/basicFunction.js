@@ -114,4 +114,28 @@ function tagOther(taskId,tagId){
     }
 }
 
-export {addProject, editProject, addTask, editTask, addTag, editTag,tagUrgency,tagOther}
+function removeTag(taskId,tagId){
+    const task = registry.allTasks.find(t => t.taskId === taskId)
+    const tag = registry.allTags.find(t => t.tagId === tagId)
+    if (task.taskId === undefined){
+        console.log('Invalid task ID')
+        return
+    } else if (tag.tagId === undefined){
+        console.log('Invalid tag ID')
+        return
+    } else if (
+        registry.allTasks.some(task => task.taskId === taskId) &&
+        registry.allTags.some(tag => tag.tagId === tagId)
+        )
+    {
+        let index = task.tags.indexOf(tagId);
+        if (index !== -1) task.tags.splice(index, 1);
+        console.log(task.tags)
+        console.table(task)
+        return [task.taskId, tag.tagId]
+    } else{
+        console.log('works but something is wrong')
+    }
+}
+
+export {addProject, editProject, addTask, editTask, addTag, editTag,tagUrgency,tagOther,removeTag}
