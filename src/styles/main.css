@@ -165,7 +165,10 @@ label[for='show-comp-toggle']{
 .urgency-level {
   background-color: red;
 }
-
+.dates-container {
+  height: 200px;
+  background-color: #34276c;
+}
 .tags-container > button{
   background-color: #cdb904;
 }
