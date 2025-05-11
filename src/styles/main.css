@@ -191,11 +191,11 @@ label[for='show-comp-toggle']{
 .project-details-header {
   background: #cdb904;
 }
-.start-date{
+.start-date-container{
   display: flex;
   background-color: #5104cd;
 }
-.end-date{
+.end-date-container{
   display: flex;
   background-color: #0454cd;
 }

@@ -37,7 +37,26 @@ flatpickr('#due-date', {
 	  console.log(format(selectedDate, 'MMMM d, yyyy'));
 	},
   });
-
+flatpickr('#start-date', {
+	dateFormat: 'Y-m-d',
+	altInput: true,   
+	altFormat: "F j, Y", 
+	onChange: function(selectedDates, dateStr, instance) {
+	  const selectedDate = new Date(dateStr)
+	  console.log(selectedDate.toISOString());
+	  console.log(format(selectedDate, 'MMMM d, yyyy'));
+	},
+  });
+flatpickr('#end-date', {
+	dateFormat: 'Y-m-d',
+	altInput: true,   
+	altFormat: "F j, Y", 
+	onChange: function(selectedDates, dateStr, instance) {
+	  const selectedDate = new Date(dateStr)
+	  console.log(selectedDate.toISOString());
+	  console.log(format(selectedDate, 'MMMM d, yyyy'));
+	},
+  });
 // const randomTask1 = registry.allTasks[0]
 // const randomTask2 = registry.allTasks[1]
 // const randomTask3 = registry.allTasks[2]
