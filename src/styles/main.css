@@ -122,16 +122,20 @@ label[for='show-comp-toggle']{
 
 .tags-container{
   background-color: rgb(255, 255, 255);
-  width: 300px;
+  width: 500px;
   display: flex;
 }
 
 .tags-label{
   background: #04cdc3;
 }
-.tags-area {
+.tags-area-task {
   background: #5104cd;
-  width: 200px;
+  min-width: 300px;
+}
+.tags-area-filter {
+  background: #5104cd;
+  min-width: 300px;
 }
 .task-list-container{
   background: #04cdc3;

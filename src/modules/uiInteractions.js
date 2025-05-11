@@ -3,7 +3,7 @@ import {removeTag, addProject, editProject, addTask, editTask, addTag, editTag,t
 import Choices from "choices.js";
 import "choices.js/public/assets/styles/choices.min.css";
 
-function setupAddRemoveEventListeners(taskId,tagSelect){
+function setupAddRemoveEventListenersForTask(taskId,tagSelect){
     const task = registry.allTasks.find(t => t.taskId === taskId)
     tagSelect.addEventListener('addItem', function(event){
       const tagId = event.detail.value
@@ -36,4 +36,4 @@ function setupAddRemoveEventListeners(taskId,tagSelect){
       })
   }
 
-export default {setupAddRemoveEventListeners}
+export default {setupAddRemoveEventListenersForTask}
