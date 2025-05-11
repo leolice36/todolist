@@ -1,9 +1,10 @@
 import registry from '../modules/coreFunction/registry'
 import {removeTag, addProject, editProject, addTask, editTask, addTag, editTag,tagUrgency,tagOther} from "../modules/coreFunction/basicFunction"
-
+import Choices from "choices.js";
+import "choices.js/public/assets/styles/choices.min.css";
 
 function generateTagSectionInTask(tagsArr,taskId){
-  console.log(taskId)
+   console.log(taskId)
   const tagSelect = document.createElement('select');
   tagSelect.id = 'tag-select';
   tagSelect.multiple = true;
@@ -19,6 +20,12 @@ function generateTagSectionInTask(tagsArr,taskId){
   });
 
   document.body.appendChild(tagSelect)
+
+  const choices = new Choices('#tag-select', {
+    removeItemButton: true,
+    shouldSort: false,
+    searchEnabled: true,
+  });
 
   setupAddRemoveEventListeners(taskId,tagSelect)
 }

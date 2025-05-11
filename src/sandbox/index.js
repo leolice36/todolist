@@ -5,14 +5,9 @@ import {removeTag, addProject, editProject, addTask, editTask, addTag, editTag,t
 import testScript from './test'
 import { parseISO, isToday, isTomorrow, isThisWeek, isThisMonth, isPast } from 'date-fns';
 // generateDefaults()
-import Choices from "choices.js";
-import "choices.js/public/assets/styles/choices.min.css";
+
 
 testScript.generateTagSectionInTask(registry.allTags,'task-1')
 
-const choices = new Choices('#tag-select', {
-    removeItemButton: true,
-    shouldSort: false,
-    searchEnabled: true,
-  });
+
 
