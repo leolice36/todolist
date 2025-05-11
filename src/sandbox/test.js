@@ -2,8 +2,6 @@ import registry from '../modules/coreFunction/registry'
 import {addProject, editProject, addTask, editTask, addTag, editTag,tagUrgency,tagOther} from "../modules/coreFunction/basicFunction"
 
 
-
-
 function generateTagSectionInTask(tagsArr,taskId){
   const task = registry.allTasks.find(t => t.taskId === taskId)
   console.log(taskId)
@@ -13,10 +11,12 @@ function generateTagSectionInTask(tagsArr,taskId){
   console.table(tagsArr) 
 
   tagsArr.forEach(tag => {
-    const option = document.createElement('option')
-    option.textContent = tag.name
-    option.value = tag.tagId
-    tagSelect.appendChild(option)
+    if (tag.type === 'other'){
+      const option = document.createElement('option')
+      option.textContent = tag.name
+      option.value = tag.tagId
+      tagSelect.appendChild(option)
+    }
   });
 
   document.body.appendChild(tagSelect)
@@ -28,6 +28,11 @@ function generateTagSectionInTask(tagsArr,taskId){
     if (tag.type === 'other'){
       tagOther(taskId,tagId)
       console.log(tag)
+    } else if (tag.type === 'urgency'){
+      console.log('Urgency is not tagged here')
+      console.log(tag)
+    } else {
+      console.log('something is wrong')
     }
     })
 
