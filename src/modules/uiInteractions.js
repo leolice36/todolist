@@ -4,6 +4,7 @@ import Choices from "choices.js";
 import "choices.js/public/assets/styles/choices.min.css";
 import { format } from "date-fns"
 import externalLibraries from './externalLibraries';
+import htmlGenerator from './htmlGenerator';
 
 function setupAddRemoveEventListenersForTask(taskId,tagSelect){
     const task = registry.allTasks.find(t => t.taskId === taskId)
@@ -50,6 +51,7 @@ function loadProjectDetailsHandler(){
     saveProjDetails(selectedProject)
     const proj = registry.allProjects.find(p => p.projectId === selectedProject)
     console.table(proj)
+    htmlGenerator.generateProjectList(registry.allProjects)
     toggleAddProjectBtn()
   })
 

@@ -65,6 +65,7 @@ function generateTagSectionInFIlter(tagsArr){
 
 function generateProjectList(projectsArr){
     const projectList = document.querySelector('.project-list')
+    projectList.innerHTML='' //reset
     console.table(projectsArr)
     projectsArr.forEach(project => {
         const projectDiv = document.createElement('div')
