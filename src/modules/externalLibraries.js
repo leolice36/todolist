@@ -1,7 +1,10 @@
 import flatpickr from 'flatpickr';
 import 'flatpickr/dist/flatpickr.css'; // Import the default CSS for styling
 import { format } from "date-fns"
-// Initialize Flatpickr
+import easyToggle from "easy-toggle-state";
+import uiInteractions from './uiInteractions';
+
+
 
 const flatpickrInstances = {
     doDate: null,
@@ -9,7 +12,7 @@ const flatpickrInstances = {
     startDate: null,
     endDate: null,
   }
-  function InitializeFlatpickr(){
+function initializeFlatpickr(){
     flatpickrInstances.doDate = flatpickr('#do-date', {
       dateFormat: 'Y-m-d',
       altInput: true,   
@@ -43,5 +46,8 @@ const flatpickrInstances = {
       },
       });
   }
-  
-export default {flatpickrInstances,InitializeFlatpickr}
+
+function initializeEasyToggle() {
+	easyToggle();
+};
+export default {flatpickrInstances,initializeFlatpickr,initializeEasyToggle}

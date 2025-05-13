@@ -19,6 +19,19 @@ function editProject(projectId, changesArr) {
     }
 }
 
+function deleteProject(projectId){
+    const proj = registry.allProjects.find(p => p.projectId === projectId)
+    if (proj.projectId === 'undefined'){
+        console.log('Invalid project ID')
+        return
+    } else {
+        const index = registry.allProjects.findIndex(proj => proj.projectId === projectId)
+        if (index !== -1){
+            registry.allProjects.splice(index,1)
+        }
+    }
+}
+
 function addTask(projectId, name = "New Task", makeDate = undefined, startDate = undefined, endDate = undefined, description = "Add task description"){
     const newTask = new Task(false, projectId, name, makeDate, startDate,endDate, description)
     registry.allTasks.push(newTask)
@@ -138,4 +151,4 @@ function removeTag(taskId,tagId){
     }
 }
 
-export {addProject, editProject, addTask, editTask, addTag, editTag,tagUrgency,tagOther,removeTag}
+export {addProject, editProject, addTask, editTask, addTag, editTag,tagUrgency,tagOther,removeTag,deleteProject}

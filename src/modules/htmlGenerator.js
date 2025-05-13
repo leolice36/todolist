@@ -74,6 +74,7 @@ function generateProjectList(projectsArr){
         projectDiv.classList.add('project') 
         projectList.appendChild(projectDiv)
     })
+    document.addEventListener("DOMContentLoaded", uiInteractions.loadProjectSelectEventListeners())
 }
 
 function generateTaskList(tasksArr){
