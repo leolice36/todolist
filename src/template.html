@@ -26,7 +26,7 @@
                 </div>
             </div>
             <div class="project-details">
-                <div class="project-details-header">New Project</div>
+                <input type="text" class="project-details-header" placeholder="Enter Project name">
                 <div class="start-date-container">
                     <label for="start-date">Start date:</label>
                     <input type="text" id="start-date" placeholder="Pick a date" />
@@ -37,9 +37,13 @@
                 </div>
                 <div class="project-description">
                     <div>Description</div>
-                    <div> orem Ipsum is section make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was 
+                    <textarea name="project-description" id="project-description"></textarea>
                     </div>
-                </div>
+                    <div class="prject-details-btn-container">
+                        <button class="save-project">save</button>
+                        <button class="cancel-changes">cancel</button>
+                    </div>
+            </div>
             </div>
             </div>
         </section>
@@ -141,7 +145,7 @@
                     </div>
                     <div class="due-date-container">
 
-                        <label for="due-date">Do date:</label>
+                        <label for="due-date">Due date:</label>
                         <input type="text" id="due-date" placeholder="Pick a date" />
                     </div>
                 </div>

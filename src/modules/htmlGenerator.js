@@ -5,6 +5,9 @@ import "choices.js/public/assets/styles/choices.min.css";
 import uiInteractions from './uiInteractions';
 
 
+
+
+
 function generateTagSectionInTask(tagsArr,taskId){
     console.log(taskId)
   const tagSelect = document.createElement('select');

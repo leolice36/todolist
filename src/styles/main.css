@@ -186,6 +186,7 @@ label[for='show-comp-toggle']{
 
 .project-details{
   background-color: white;
+  display: none;
 }
 
 .project-details-header {
@@ -199,8 +200,9 @@ label[for='show-comp-toggle']{
   display: flex;
   background-color: #0454cd;
 }
-.project-description{
+#project-description{
   background-color: #fcf7ce;
+  height: 300px;
 }
 .project-description :first-child {
   background-color: black;
