@@ -152,6 +152,7 @@ label[for='show-comp-toggle']{
 .task {
   color: white;
   background: black;
+  cursor: pointer;
 }
 .task-details-container{
   background: #5104cd;

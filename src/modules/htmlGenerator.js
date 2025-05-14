@@ -6,6 +6,7 @@ import uiInteractions from './uiInteractions/uiInteractions';
 import projectSection from './uiInteractions/projectSection';
 import { generateDefaults } from './coreFunction/defaultObjs';
 import externalLibraries from './externalLibraries';
+import taskSection from './uiInteractions/taskSection';
 
 function startUp(){
   generateDefaults()
@@ -99,5 +100,6 @@ function generateTaskList(tasksArr){
         taskDiv.classList.add('task') 
         tasksList.appendChild(taskDiv)
     })
+    document.addEventListener("DOMContentLoaded", taskSection.loadTaskSelectEventListeners())
 }
 export default {generateTagSectionInTask,generateTagSectionInFIlter,generateProjectList,generateTaskList,startUp}

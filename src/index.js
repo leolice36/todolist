@@ -9,15 +9,6 @@ import htmlGenerator from "./modules/htmlGenerator"
 import externalLibraries from "./modules/externalLibraries"
 import uiInteractions from "./modules/uiInteractions/uiInteractions"
 import projectSection from "./modules/uiInteractions/projectSection"
-// generateDefaults()
-// htmlGenerator.generateTagSectionInTask(registry.allTags,'task-1')
-// htmlGenerator.generateTagSectionInFIlter(registry.allTags)
-// htmlGenerator.generateProjectList(registry.allProjects)
-// htmlGenerator.generateTaskList(registry.allTasks)
-
-// externalLibraries.initializeFlatpickr()
-// externalLibraries.initializeEasyToggle()
-
 
 
 document.addEventListener("DOMContentLoaded", htmlGenerator.startUp)
