@@ -1,10 +1,10 @@
-import registry from '../modules/coreFunction/registry'
-import {deleteProject, removeTag, addProject, editProject, addTask, editTask, addTag, editTag,tagUrgency,tagOther} from "../modules/coreFunction/basicFunction"
+import registry from '../coreFunction/registry'
+import {deleteProject, removeTag, addProject, editProject, addTask, editTask, addTag, editTag,tagUrgency,tagOther} from "../coreFunction/basicFunction"
 import Choices from "choices.js";
 import "choices.js/public/assets/styles/choices.min.css";
 import { format } from "date-fns"
-import externalLibraries from './externalLibraries';
-import htmlGenerator from './htmlGenerator';
+import externalLibraries from '../externalLibraries';
+import htmlGenerator from '../htmlGenerator';
 
 //Used to actually tag the object
 function setupAddRemoveEventListenersForTask(taskId,tagSelect){
@@ -103,7 +103,9 @@ function cancelBtnSequence(){
     console.table(registry.allProjects)
   }
   projectDetailsState.isCreatingNewProj = false
+  console.log('runs1')
   enableProjectSelect()
+  console.log('runs2')
 }
 
 function selectProj(projId,projName){
@@ -131,7 +133,9 @@ function disableProjectSelect(){
 function enableProjectSelect(){
   const projects = document.querySelectorAll('.project')
   projects.forEach(project => {
-    project.style.cursor = 'cursor'
+    console.log('runsRUNS')
+    project.style.cursor = 'pointer'
+    console.log('runsRUNS')
   });
 }
 

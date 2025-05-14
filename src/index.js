@@ -7,7 +7,7 @@ import filter from './modules/coreFunction/filter'
 import { subDays, addDays, formatISO, parseISO, isToday, isTomorrow, isThisWeek, isThisMonth, isPast } from 'date-fns';
 import htmlGenerator from "./modules/htmlGenerator"
 import externalLibraries from "./modules/externalLibraries"
-import uiInteractions from "./modules/uiInteractions"
+import uiInteractions from "./modules/uiInteractions/uiInteractions"
 generateDefaults()
 htmlGenerator.generateTagSectionInTask(registry.allTags,'task-1')
 htmlGenerator.generateTagSectionInFIlter(registry.allTags)

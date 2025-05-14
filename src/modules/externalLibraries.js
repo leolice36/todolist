@@ -2,7 +2,7 @@ import flatpickr from 'flatpickr';
 import 'flatpickr/dist/flatpickr.css'; // Import the default CSS for styling
 import { format } from "date-fns"
 import easyToggle from "easy-toggle-state";
-import uiInteractions from './uiInteractions';
+import uiInteractions from './uiInteractions/uiInteractions';
 
 
 
