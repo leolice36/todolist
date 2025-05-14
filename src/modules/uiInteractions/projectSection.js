@@ -3,7 +3,8 @@ import {deleteProject, removeTag, addProject, editProject, addTask, editTask, ad
 import "choices.js/public/assets/styles/choices.min.css";
 import externalLibraries from '../externalLibraries';
 import htmlGenerator from '../htmlGenerator';
-
+import taskSection from "./taskSection";
+import filter from "../coreFunction/filter";
 const projectDetailsState = {
     latestProjectId: null,
     selectedProjectId: null,
@@ -39,6 +40,8 @@ const projectDetailsState = {
       if (getComputedStyle(projDetailsDiv).display === 'block'){toggleProjectDetails()}
       projectDetailsState.selectedProjectId = null
       console.log(projectDetailsState.selectedProjectId)
+      updateProjIdInFilterObj('none')
+      taskSection.printFilteredTasks()
     })
   }
   
@@ -94,9 +97,16 @@ const projectDetailsState = {
         toggleProjectDetails()
       }
       printProjDetailsInUI(projId)
+      updateProjIdInFilterObj(projId)
+      taskSection.printFilteredTasks()
     }
   }
   
+  function updateProjIdInFilterObj(projId){
+    filter.filterObj.projectFilter = projId
+    console.table(filter.filterObj)
+  }
+
   //UI only disable, actual disable happens on the select function
   function disableProjectSelect(){
     const projects = document.querySelectorAll('.project')

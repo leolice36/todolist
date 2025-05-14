@@ -64,7 +64,6 @@ function generateTagSectionInFIlter(tagsArr){
   });
   const tagsArea = document.querySelector('.tags-area-filter')
   tagsArea.appendChild(tagSelect)
-  console.log(tagsArea)
 
   const choices = new Choices('#tag-select-filter', {
     removeItemButton: true,
