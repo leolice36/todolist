@@ -30,6 +30,17 @@ const projectDetailsState = {
       })
     });
   }
+
+  function loadAllProjectsEventListeners(){
+    const allProjects = document.querySelector('.all-projects-container')
+    const projDetailsDiv = document.querySelector('.project-details')
+    allProjects.addEventListener('click', () => {
+      console.log('ALL PROJECTS')
+      if (getComputedStyle(projDetailsDiv).display === 'block'){toggleProjectDetails()}
+      projectDetailsState.selectedProjectId = null
+      console.log(projectDetailsState.selectedProjectId)
+    })
+  }
   
   function addProjBtnSequence(){
       projectDetailsState.isCreatingNewProj = true
@@ -184,4 +195,4 @@ const projectDetailsState = {
     console.table(initial)
     return initial
   }  
-  export default {loadProjectDetailsHandler,loadProjectSelectEventListeners}
+  export default {loadProjectDetailsHandler,loadProjectSelectEventListeners,loadAllProjectsEventListeners}

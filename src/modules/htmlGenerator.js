@@ -16,6 +16,7 @@ function startUp(){
   externalLibraries.initializeFlatpickr()
   externalLibraries.initializeEasyToggle()
   projectSection.loadProjectDetailsHandler()
+  projectSection.loadAllProjectsEventListeners()
 }
 
 

@@ -52,6 +52,7 @@ body * {
 
 .all-projects-container{
   background-color: #ff7e5f;
+  cursor: pointer;
 }
 
 .project-list{
