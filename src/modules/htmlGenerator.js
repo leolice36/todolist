@@ -3,9 +3,20 @@ import {removeTag, addProject, editProject, addTask, editTask, addTag, editTag,t
 import Choices from "choices.js";
 import "choices.js/public/assets/styles/choices.min.css";
 import uiInteractions from './uiInteractions/uiInteractions';
+import projectSection from './uiInteractions/projectSection';
+import { generateDefaults } from './coreFunction/defaultObjs';
+import externalLibraries from './externalLibraries';
 
-
-
+function startUp(){
+  generateDefaults()
+  generateTagSectionInTask(registry.allTags,'task-2')
+  generateTagSectionInFIlter(registry.allTags)
+  generateProjectList(registry.allProjects)
+  generateTaskList(registry.allTasks)
+  externalLibraries.initializeFlatpickr()
+  externalLibraries.initializeEasyToggle()
+  projectSection.loadProjectDetailsHandler()
+}
 
 
 function generateTagSectionInTask(tagsArr,taskId){
@@ -74,7 +85,7 @@ function generateProjectList(projectsArr){
         projectDiv.classList.add('project') 
         projectList.appendChild(projectDiv)
     })
-    document.addEventListener("DOMContentLoaded", uiInteractions.loadProjectSelectEventListeners())
+    document.addEventListener("DOMContentLoaded", projectSection.loadProjectSelectEventListeners())
 }
 
 function generateTaskList(tasksArr){
@@ -89,4 +100,4 @@ function generateTaskList(tasksArr){
         tasksList.appendChild(taskDiv)
     })
 }
-export default {generateTagSectionInTask,generateTagSectionInFIlter,generateProjectList,generateTaskList}
+export default {generateTagSectionInTask,generateTagSectionInFIlter,generateProjectList,generateTaskList,startUp}
