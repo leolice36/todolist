@@ -79,6 +79,7 @@ function generateProjectList(projectsArr){
 
 function generateTaskList(tasksArr){
     const tasksList = document.querySelector('.task-list')
+    tasksList.innerHTML='' //reset
     console.table(tasksArr)
     tasksArr.forEach(task => {
         const taskDiv = document.createElement('div')

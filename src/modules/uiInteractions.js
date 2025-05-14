@@ -6,6 +6,7 @@ import { format } from "date-fns"
 import externalLibraries from './externalLibraries';
 import htmlGenerator from './htmlGenerator';
 
+//Used to actually tag the object
 function setupAddRemoveEventListenersForTask(taskId,tagSelect){
     const task = registry.allTasks.find(t => t.taskId === taskId)
     tagSelect.addEventListener('addItem', function(event){
@@ -162,10 +163,7 @@ function toggleAddProjectBtn(){
   addProjBtn.disabled = !addProjBtn.disabled
 }
 
-function getNewItems(oldArr,newArr,id){
-  return newArr.filter(
-    newItem => !oldArr.some(oldItem => oldItem[id] === newItem[id]))
-}
+
 
 function clearProjectDetailsUI(){
   const projName = document.querySelector('input.project-details-header')
@@ -180,22 +178,7 @@ function saveProjDetails(projId){
   editProject(projId, projChangesObj)
 }
 
-function createInitialProjDetailsObj(){
-  const projName = document.querySelector('input.project-details-header')
-  const startDate = document.querySelector('input#start-date')
-  const endDate = document.querySelector('input#end-date')
-  const projDescription = document.querySelector('#project-description')
 
-  const initial = {
-    name: projName.value,
-    makeDate: new Date().toISOString(),
-    startDate: new Date(startDate.value).toISOString(),
-    endDate: new Date(endDate.value).toISOString(),
-    description: projDescription.value,
-  }
-  console.table(initial)
-  return initial
-}
 function createProjChangesObj(){
   const projName = document.querySelector('input.project-details-header')
   const startDate = document.querySelector('input#start-date')
@@ -215,5 +198,27 @@ function createProjChangesObj(){
   }
   console.table(changes)
   return changes
+}
+
+function createInitialProjDetailsObj(){
+  const projName = document.querySelector('input.project-details-header')
+  const startDate = document.querySelector('input#start-date')
+  const endDate = document.querySelector('input#end-date')
+  const projDescription = document.querySelector('#project-description')
+
+  const initial = {
+    name: projName.value,
+    makeDate: new Date().toISOString(),
+    startDate: new Date(startDate.value).toISOString(),
+    endDate: new Date(endDate.value).toISOString(),
+    description: projDescription.value,
+  }
+  console.table(initial)
+  return initial
+}
+
+function getNewItems(oldArr,newArr,id){
+  return newArr.filter(
+    newItem => !oldArr.some(oldItem => oldItem[id] === newItem[id]))
 }
 export default {setupAddRemoveEventListenersForTask,loadProjectDetailsHandler,loadProjectSelectEventListeners}
