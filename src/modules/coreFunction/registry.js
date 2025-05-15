@@ -88,8 +88,8 @@ const allProjects = [
   
   const allTags = [
     {
-      name: 'High Priority',
-      type: 'urgency',
+      name: 'RANDOM BULLSHIT',
+      type: 'other',
       tagId: 'tag-1',
       color: ''
     },

@@ -28,7 +28,16 @@ function selectTask(taskId,taskName){
       return
     } else {
       console.log(`${taskName} selected with task ID: ${taskId}` )
+      findTaskObj(taskId)
     }
   }
 
+function findTaskObj(taskId){
+  const task = registry.allTasks.find(task => task.taskId === taskId)
+  return task
+}
+
+function printTaskDetails(){
+  
+}
 export default {tasksStateObj,printFilteredTasks,loadTaskSelectEventListeners}

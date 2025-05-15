@@ -167,6 +167,7 @@ label[for='show-comp-toggle']{
 }
 .urgency-level {
   background-color: red;
+  width: 100px;
 }
 .dates-container {
   height: 200px;
@@ -178,13 +179,17 @@ label[for='show-comp-toggle']{
 
 .notes-container{
   background-color: black;
+  display: flex;
+  flex-direction: column;
 }
 .notes-header {
   background-color: #9ffacb;
 }
 
-.notes-area {
+#notes-area {
   background-color: white;
+  min-height: 300px;
+  resize: none;
 }
 
 .project-details{

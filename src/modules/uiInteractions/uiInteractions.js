@@ -39,5 +39,31 @@ function setupAddRemoveEventListenersForTask(taskId,tagSelect){
       }
       })
   }
+function addEventListenerToUrgency(taskId,urgencySelect){
+    const task = registry.allTasks.find(t => t.taskId === taskId)
+    urgencySelect.addEventListener('addItem', function(event){
+      const tagId = event.detail.value
+      const tag = registry.allTags.find(t => t.tagId === tagId)
+      console.log(task.name, 'tagged with', event.detail.label)
+      if (tag.type === 'urgency'){
+        tagUrgency(taskId,tagId)
+        console.log(tag)
+      } else {
+        console.log('something is wrong')
+      }
+      })
+  
+      urgencySelect.addEventListener('removeItem', function(event){
+      const tagId = event.detail.value
+      const tag = registry.allTags.find(t => t.tagId === tagId)
+      console.log(event.detail.value, 'tag removed from', task.name)
+      if (tag.type === 'urgency'){
+        removeTag(taskId,tagId)
+        console.log(tag)
+      } else {
+        console.log('something is wrong')
+      }
+      })
+  }
 
-export default {setupAddRemoveEventListenersForTask}
+export default {setupAddRemoveEventListenersForTask,addEventListenerToUrgency}

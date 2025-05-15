@@ -9,7 +9,7 @@ import htmlGenerator from "./modules/htmlGenerator"
 import externalLibraries from "./modules/externalLibraries"
 import uiInteractions from "./modules/uiInteractions/uiInteractions"
 import projectSection from "./modules/uiInteractions/projectSection"
-
+import randomUtilities from "./modules/randomUtilities"
 
 document.addEventListener("DOMContentLoaded", htmlGenerator.startUp)
-
+document.addEventListener("DOMContentLoaded", setTimeout(randomUtilities.getUrgencyTags,1000))

@@ -7,10 +7,12 @@ import projectSection from './uiInteractions/projectSection';
 import { generateDefaults } from './coreFunction/defaultObjs';
 import externalLibraries from './externalLibraries';
 import taskSection from './uiInteractions/taskSection';
+import randomUtilities from './randomUtilities';
 
 function startUp(){
   generateDefaults()
   generateTagSectionInTask(registry.allTags,'task-2')
+  generateUrgencySectionInTask('task-2')
   generateTagSectionInFIlter(registry.allTags)
   generateProjectList(registry.allProjects)
   generateTaskList(registry.allTasks)
@@ -20,13 +22,12 @@ function startUp(){
   projectSection.loadAllProjectsEventListeners()
 }
 
-
 function generateTagSectionInTask(tagsArr,taskId){
-    console.log(taskId)
+
   const tagSelect = document.createElement('select');
   tagSelect.id = 'tag-select-task';
   tagSelect.multiple = true;
-  console.table(tagsArr) 
+
 
   tagsArr.forEach(tag => {
     if (tag.type === 'other'){
@@ -38,7 +39,7 @@ function generateTagSectionInTask(tagsArr,taskId){
   });
   const tagsArea = document.querySelector('.tags-area-task')
   tagsArea.appendChild(tagSelect)
-  console.log(tagsArea)
+
 
   const choices = new Choices('#tag-select-task', {
     removeItemButton: true,
@@ -48,12 +49,33 @@ function generateTagSectionInTask(tagsArr,taskId){
 
   uiInteractions.setupAddRemoveEventListenersForTask(taskId,tagSelect)
 }
+function generateUrgencySectionInTask(taskId){
+  const urgencyTags = randomUtilities.getUrgencyTags()
+  const urgencySelect = document.createElement('select');
+  urgencySelect.id = 'urgency-select';
+
+  const urgencyLevel = document.querySelector('.urgency-level')
+  urgencyLevel.appendChild(urgencySelect)
+
+  const choices = new Choices('#urgency-select', {
+    searchEnabled: false,
+    itemSelectText: '',
+    placeholder: true,
+    placeholderValue: 'Urgency',
+    shouldSort:false,
+    choices: urgencyTags.map(tag => ({
+      value: tag.tagId,
+      label: tag.name
+    }))
+  })
+  uiInteractions.setupAddRemoveEventListenersForTask(taskId,urgencySelect)
+
+}
 
 function generateTagSectionInFIlter(tagsArr){
   const tagSelect = document.createElement('select');
   tagSelect.id = 'tag-select-filter';
   tagSelect.multiple = true;
-  console.table(tagsArr) 
 
   tagsArr.forEach(tag => {
     if (tag.type === 'other'){
@@ -78,7 +100,6 @@ function generateTagSectionInFIlter(tagsArr){
 function generateProjectList(projectsArr){
     const projectList = document.querySelector('.project-list')
     projectList.innerHTML='' //reset
-    console.table(projectsArr)
     projectsArr.forEach(project => {
         const projectDiv = document.createElement('div')
         projectDiv.textContent = project.name
@@ -92,7 +113,6 @@ function generateProjectList(projectsArr){
 function generateTaskList(tasksArr){
     const tasksList = document.querySelector('.task-list')
     tasksList.innerHTML='' //reset
-    console.table(tasksArr)
     tasksArr.forEach(task => {
         const taskDiv = document.createElement('div')
         taskDiv.textContent = task.name
@@ -102,4 +122,5 @@ function generateTaskList(tasksArr){
     })
     document.addEventListener("DOMContentLoaded", taskSection.loadTaskSelectEventListeners())
 }
+
 export default {generateTagSectionInTask,generateTagSectionInFIlter,generateProjectList,generateTaskList,startUp}
