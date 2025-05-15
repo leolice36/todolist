@@ -12,4 +12,4 @@ import projectSection from "./modules/uiInteractions/projectSection"
 import randomUtilities from "./modules/randomUtilities"
 
 document.addEventListener("DOMContentLoaded", htmlGenerator.startUp)
-document.addEventListener("DOMContentLoaded", setTimeout(randomUtilities.getUrgencyTags,1000))
+// document.addEventListener("DOMContentLoaded", setTimeout(randomUtilities.getUrgencyTags,1000))

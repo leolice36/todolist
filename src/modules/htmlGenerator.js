@@ -18,57 +18,39 @@ function startUp(){
   generateTaskList(registry.allTasks)
   externalLibraries.initializeFlatpickr()
   externalLibraries.initializeEasyToggle()
+  externalLibraries.initializeChoicesJs()
   projectSection.loadProjectDetailsHandler()
   projectSection.loadAllProjectsEventListeners()
 }
 
-function generateTagSectionInTask(tagsArr,taskId){
+function generateTagSectionInTask(tagsArr){
 
   const tagSelect = document.createElement('select');
   tagSelect.id = 'tag-select-task';
   tagSelect.multiple = true;
 
 
-  tagsArr.forEach(tag => {
-    if (tag.type === 'other'){
-      const option = document.createElement('option')
-      option.textContent = tag.name
-      option.value = tag.tagId
-      tagSelect.appendChild(option)
-    }
-  });
+  // tagsArr.forEach(tag => {
+  //   if (tag.type === 'other'){
+  //     const option = document.createElement('option')
+  //     option.textContent = tag.name
+  //     option.value = tag.tagId
+  //     tagSelect.appendChild(option)
+  //   }
+  // });
   const tagsArea = document.querySelector('.tags-area-task')
   tagsArea.appendChild(tagSelect)
 
-
-  const choices = new Choices('#tag-select-task', {
-    removeItemButton: true,
-    shouldSort: false,
-    searchEnabled: true,
-  });
-
-  uiInteractions.setupAddRemoveEventListenersForTask(taskId,tagSelect)
+  //need to decouple the tagging 
+  // uiInteractions.setupAddRemoveEventListenersForTask(taskId,tagSelect)
 }
-function generateUrgencySectionInTask(taskId){
-  const urgencyTags = randomUtilities.getUrgencyTags()
+function generateUrgencySectionInTask(){
   const urgencySelect = document.createElement('select');
   urgencySelect.id = 'urgency-select';
 
   const urgencyLevel = document.querySelector('.urgency-level')
   urgencyLevel.appendChild(urgencySelect)
-
-  const choices = new Choices('#urgency-select', {
-    searchEnabled: false,
-    itemSelectText: '',
-    placeholder: true,
-    placeholderValue: 'Urgency',
-    shouldSort:false,
-    choices: urgencyTags.map(tag => ({
-      value: tag.tagId,
-      label: tag.name
-    }))
-  })
-  uiInteractions.setupAddRemoveEventListenersForTask(taskId,urgencySelect)
+  // uiInteractions.setupAddRemoveEventListenersForTask(taskId,urgencySelect)
 
 }
 
@@ -87,14 +69,6 @@ function generateTagSectionInFIlter(tagsArr){
   });
   const tagsArea = document.querySelector('.tags-area-filter')
   tagsArea.appendChild(tagSelect)
-
-  const choices = new Choices('#tag-select-filter', {
-    removeItemButton: true,
-    shouldSort: false,
-    searchEnabled: true,
-  });
-
-  //Attach to filter object via event listeners 
 }
 
 function generateProjectList(projectsArr){

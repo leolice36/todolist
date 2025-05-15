@@ -167,7 +167,6 @@ const projectDetailsState = {
     editProject(projId, projChangesObj)
   }
   
-  
   function createProjChangesObj(){
     const projName = document.querySelector('input.project-details-header')
     const startDate = document.querySelector('input#start-date')

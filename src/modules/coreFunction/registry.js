@@ -32,7 +32,7 @@ const allProjects = [
       doDate: '2025-05-07T00:00:00.000Z',
       dueDate: '2025-05-10T00:00:00.000Z',
       description: 'Design a new wireframe.',
-      tags: [],
+      tags: ['high','tag-2', 'tag-3'],
       taskId: 'task-1',
       color: ''
     },
@@ -44,7 +44,7 @@ const allProjects = [
       doDate: '2025-05-08T00:00:00.000Z',
       dueDate: '2025-05-11T00:00:00.000Z',
       description: 'Ensure accessibility compliance.',
-      tags: [],
+      tags: ['high','tag-1'],
       taskId: 'task-2',
       color: ''
     },
@@ -56,7 +56,7 @@ const allProjects = [
       doDate: '2025-05-09T00:00:00.000Z',
       dueDate: '2025-05-12T00:00:00.000Z',
       description: 'Test layout on various screen sizes.',
-      tags: [],
+      tags: ['medium','tag-2', 'tag-4', 'tag-3'],
       taskId: 'task-3',
       color: ''
     },
@@ -68,7 +68,7 @@ const allProjects = [
       doDate: '2025-05-11T00:00:00.000Z',
       dueDate: '2025-05-14T00:00:00.000Z',
       description: 'Create ad headlines and text.',
-      tags: [],
+      tags: ['medium','tag-5', 'tag-1'],
       taskId: 'task-4',
       color: ''
     },
@@ -80,11 +80,12 @@ const allProjects = [
       doDate: '2025-05-13T00:00:00.000Z',
       dueDate: '2025-05-16T00:00:00.000Z',
       description: 'Setup Mailchimp automation.',
-      tags: [],
+      tags: ['low','tag-1', 'tag-5', 'tag-4'],
       taskId: 'task-5',
       color: ''
     }
   ];
+  
   
   const allTags = [
     {

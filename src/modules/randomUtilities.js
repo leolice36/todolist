@@ -11,4 +11,23 @@ function getUrgencyTags(){
   console.table(urgencyTags)
   return urgencyTags
 }
-export default {getUrgencyTags}
+
+function getOtherTags(){
+  const otherTags =  registry.allTags.filter(tag => tag.type === 'other')
+  console.table(otherTags)
+  return otherTags
+}
+
+function findTaskObj(taskId){
+  const task = registry.allTasks.find(task => task.taskId === taskId)
+  return task
+}
+
+function getTaskObj(taskId){
+  return registry.allTasks.find(task => task.taskId === taskId)
+}
+
+function getProjObj(projId){
+  return registry.allProjects.find(proj => proj.projectId === projId)
+}
+export default {getUrgencyTags,findTaskObj,getTaskObj,getProjObj,getOtherTags}
