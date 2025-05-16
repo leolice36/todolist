@@ -31,13 +31,60 @@ function selectTask(taskId,taskName){
     if (tasksStateObj.isCreatingNewTask){ //disables when creating task
       return
     } else {
-      console.log(`${taskName} selected with task ID: ${taskId}` )
+      tasksStateObj.selectedTask=taskId
+      console.log(tasksStateObj.selectedTask)
       randomUtilities.findTaskObj(taskId)
       printTaskDetailsInUI(taskId)
     }
   }
 
+function loadTaskDetailsHandler(){
+  // const addProjBtn = document.querySelector('.add-project')
+  // addProjBtn.addEventListener('click', addProjBtnSequence)
 
+  const saveBtn = document.querySelector('.save-task')
+  saveBtn.addEventListener('click', saveTaskBtnSequence)
+
+
+  // const cancelBtn = document.querySelector('.cancel-changes')
+  // cancelBtn.addEventListener('click', cancelBtnSequence)
+}
+
+function saveTaskBtnSequence(){
+  saveTaskChanges(tasksStateObj.selectedTask)
+}
+function saveTaskChanges(taskId){
+  const changes = createTaskChangesObj()
+  editTask(taskId,changes)
+}
+
+function createTaskChangesObj(){
+  const taskName = document.querySelector('input.project-details-header')
+  const doDate = document.querySelector('input#do-date')
+  const dueDate = document.querySelector('input#due-date')
+  const taskDescription = document.querySelector('#notes-area')
+  
+  const changes = {};
+  const tags = [];
+  const urgencyId = externalLibraries.choiceJSInstances.urgencyTagger.getValue(true)
+  const otherTagIds = externalLibraries.choiceJSInstances.otherTagger.getValue(true)
+  tags.push(urgencyId)
+  tags.push(...otherTagIds)
+
+  if (doDate.value !== '' && dueDate.value !== ''){
+      changes.name =  taskName.value
+      changes.doDate = new Date(doDate.value).toISOString()
+      changes.dueDate = new Date(dueDate.value).toISOString()
+      changes.tags = tags
+      changes.description = taskDescription.value
+  } else {
+    changes.name =  taskName.value
+    changes.tags = tags
+    changes.description = taskDescription.value
+  }
+  console.table(changes)
+  return changes
+}
 
 function printTaskDetailsInUI(taskId){
   const task = randomUtilities.getTaskObj(taskId)
@@ -45,7 +92,7 @@ function printTaskDetailsInUI(taskId){
   const tagIdsArr = task.tags
   const tagSet = new Set(tagIdsArr)
   const tagsArr = registry.allTags.filter(tag => tagSet.has(tag.tagId))
-  console.table(tagsArr)
+
   const taskDetailsContainer = document.querySelector('.task-details-container')
   printTaskAndProjectName(task,proj,taskDetailsContainer)
   printTaskUrgency(tagsArr)
@@ -78,18 +125,17 @@ function printDatesUrgency(task){
 
 function printTaskTags(tagsArr){
   const otherTags = tagsArr.filter(tag => tag.type === 'other')
-  console.table(otherTags)
+  
   const otherTagsValues = []
   otherTags.forEach(tag => {
     otherTagsValues.push(tag.tagId)
   })
-  console.table(otherTagsValues)
   if (otherTags.length > 0){
     externalLibraries.choiceJSInstances.otherTagger.removeActiveItems()
     externalLibraries.choiceJSInstances.otherTagger.setChoiceByValue(otherTagsValues)
   } else {
     externalLibraries.choiceJSInstances.otherTagger.removeActiveItems()
-    console.table('tanggal')
+    console.table('wala na tag')
   }
 }
 
@@ -97,4 +143,4 @@ function printDescription(task, taskDetailsContainer){
   const taskDescription = taskDetailsContainer.querySelector('#notes-area')
   taskDescription.value = task.description
 }
-export default {tasksStateObj,printFilteredTasks,loadTaskSelectEventListeners}
+export default {tasksStateObj,printFilteredTasks,loadTaskSelectEventListeners,loadTaskDetailsHandler}

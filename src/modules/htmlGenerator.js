@@ -9,6 +9,7 @@ import externalLibraries from './externalLibraries';
 import taskSection from './uiInteractions/taskSection';
 import randomUtilities from './randomUtilities';
 
+
 function startUp(){
   generateDefaults()
   generateTagSectionInTask(registry.allTags,'task-2')
@@ -21,6 +22,7 @@ function startUp(){
   externalLibraries.initializeChoicesJs()
   projectSection.loadProjectDetailsHandler()
   projectSection.loadAllProjectsEventListeners()
+  taskSection.loadTaskDetailsHandler()
 }
 
 function generateTagSectionInTask(tagsArr){
