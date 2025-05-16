@@ -165,4 +165,4 @@ function printDescription(task, taskDetailsContainer){
   const taskDescription = taskDetailsContainer.querySelector('#notes-area')
   taskDescription.value = task.description
 }
-export default {tasksStateObj,printFilteredTasks,loadTaskSelectEventListeners,loadTaskDetailsHandler}
+export default {tasksStateObj,printFilteredTasks,loadTaskSelectEventListeners,loadTaskDetailsHandler,toggleTaskDetails}

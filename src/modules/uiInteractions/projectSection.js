@@ -70,6 +70,7 @@ const projectDetailsState = {
       toggleAddProjectBtn()
     }
     projectDetailsState.isCreatingNewProj = false
+    taskSection.toggleTaskDetails()
     enableProjectSelect()
   }
   
