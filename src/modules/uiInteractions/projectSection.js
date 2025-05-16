@@ -204,4 +204,4 @@ const projectDetailsState = {
     console.table(initial)
     return initial
   }  
-  export default {loadProjectDetailsHandler,loadProjectSelectEventListeners,loadAllProjectsEventListeners}
+  export default {loadProjectDetailsHandler,loadProjectSelectEventListeners,loadAllProjectsEventListeners,projectDetailsState,selectProj}

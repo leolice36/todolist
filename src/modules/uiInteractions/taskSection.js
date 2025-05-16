@@ -6,10 +6,12 @@ import randomUtilities from "../randomUtilities";
 import externalLibraries from "../externalLibraries";
 import Choices from "choices.js";
 import flatpickr from "flatpickr";
+import projectSection from "./projectSection";
 const tasksStateObj = {
     selectedTask: null,
     shownTasks:[],
     isCreatingNewTask: false,
+    latestTaskId: null,
 }
 
 function printFilteredTasks(){
@@ -43,8 +45,8 @@ function selectTask(taskId,taskName){
   }
 
 function loadTaskDetailsHandler(){
-  // const addProjBtn = document.querySelector('.add-project')
-  // addProjBtn.addEventListener('click', addProjBtnSequence)
+  const addTaskBtn = document.querySelector('.add-task')
+  addTaskBtn.addEventListener('click', addTaskBtnSequence)
 
   const saveBtn = document.querySelector('.save-task')
   saveBtn.addEventListener('click', saveTaskBtnSequence)
@@ -52,6 +54,38 @@ function loadTaskDetailsHandler(){
 
   // const cancelBtn = document.querySelector('.cancel-changes')
   // cancelBtn.addEventListener('click', cancelBtnSequence)
+}
+
+function addTaskBtnSequence(){
+  tasksStateObj.isCreatingNewTask = true //disable on select task function applied
+  disableTaskSelect()
+  let projId = projectSection.projectDetailsState.selectedProjectId
+  let newTaskId;
+  if (projId === null){
+    newTaskId = addTask('random')
+    projId = 'random'
+  } else {
+    newTaskId = addTask(projId)
+  }
+  tasksStateObj.latestTaskId = newTaskId
+  tasksStateObj.selectedTask = tasksStateObj.latestTaskId
+  const task = randomUtilities.getTaskObj(newTaskId)
+  console.table(task)
+  projectSection.selectProj(projId)
+  tasksStateObj.isCreatingNewTask = false
+  selectTask(newTaskId)
+}
+
+//UI only disable, actual disable happens on the select function
+function disableTaskSelect(){
+  const tasks = document.querySelectorAll('.task')
+  tasks.forEach(task => {
+    task.style.cursor = 'default'
+  });
+}
+
+function clearTaskDetailsUI(){
+
 }
 
 function saveTaskBtnSequence(){
