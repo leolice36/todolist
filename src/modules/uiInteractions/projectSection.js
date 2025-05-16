@@ -104,7 +104,6 @@ const projectDetailsState = {
   
   function updateProjIdInFilterObj(projId){
     filter.filterObj.projectFilter = projId
-    console.table(filter.filterObj)
   }
 
   //UI only disable, actual disable happens on the select function

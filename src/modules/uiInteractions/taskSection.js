@@ -31,10 +31,14 @@ function selectTask(taskId,taskName){
     if (tasksStateObj.isCreatingNewTask){ //disables when creating task
       return
     } else {
+      const detailsContainer = document.querySelector('.task-details-container')
+      if (getComputedStyle(detailsContainer).display === 'none'){
+        toggleTaskDetails()
+      }
       tasksStateObj.selectedTask=taskId
-      console.log(tasksStateObj.selectedTask)
       randomUtilities.findTaskObj(taskId)
       printTaskDetailsInUI(taskId)
+      console.log(tasksStateObj.selectedTask)
     }
   }
 
@@ -52,14 +56,32 @@ function loadTaskDetailsHandler(){
 
 function saveTaskBtnSequence(){
   saveTaskChanges(tasksStateObj.selectedTask)
+  const detailsContainer = document.querySelector('.task-details-container')
+  if (getComputedStyle(detailsContainer).display === 'block'){
+    toggleTaskDetails()
+  }
+  printFilteredTasks()
+  
 }
+
+function toggleTaskDetails(){
+  const container = document.querySelector('.task-details-container')
+  if (getComputedStyle(container).display === 'none'){
+    container.style.display = 'block'
+  } else if (getComputedStyle(container).display === 'block'){
+    container.style.display = 'none'
+  } else {
+    console.log('may mali')
+  }
+}
+
 function saveTaskChanges(taskId){
   const changes = createTaskChangesObj()
   editTask(taskId,changes)
 }
 
 function createTaskChangesObj(){
-  const taskName = document.querySelector('input.project-details-header')
+  const taskName = document.querySelector('input.task-name')
   const doDate = document.querySelector('input#do-date')
   const dueDate = document.querySelector('input#due-date')
   const taskDescription = document.querySelector('#notes-area')
@@ -105,7 +127,7 @@ function printTaskAndProjectName(task,proj,taskDetailsContainer){
   const taskName = taskDetailsContainer.querySelector('.task-name')
   const projectName = taskDetailsContainer.querySelector('.project-name')
   
-  taskName.textContent = task.name
+  taskName.value = task.name
   projectName.textContent = proj.name
 }
 

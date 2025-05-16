@@ -157,6 +157,7 @@ label[for='show-comp-toggle']{
 .task-details-container{
   background: #5104cd;
   grid-area: details;
+  display: none;
 }
 .name-container {
   background-color: #cdb904;
