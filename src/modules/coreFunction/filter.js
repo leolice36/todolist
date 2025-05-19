@@ -14,7 +14,7 @@ import { subDays, addDays, formatISO, parseISO, isToday, isTomorrow, isThisWeek,
 // }
 
 const filterObj = {
-  isDone: false,
+  isDone: 'none',
   timeFilter:'none',
   urgencyFilter: 'none',
   tagFilter: {},
