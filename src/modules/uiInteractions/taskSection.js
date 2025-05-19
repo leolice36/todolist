@@ -44,6 +44,10 @@ function selectTask(taskId,taskName){
     }
   }
 
+function updateTaskIsDone(){
+  
+}
+
 function loadTaskDetailsHandler(){
   const addTaskBtn = document.querySelector('.add-task')
   addTaskBtn.addEventListener('click', addTaskBtnSequence)
@@ -84,6 +88,7 @@ function disableTaskSelect(){
   });
 }
 
+//not needed for now
 function clearTaskDetailsUI(){
 
 }
@@ -151,10 +156,19 @@ function printTaskDetailsInUI(taskId){
 
   const taskDetailsContainer = document.querySelector('.task-details-container')
   printTaskAndProjectName(task,proj,taskDetailsContainer)
+  printIsDone(task,taskDetailsContainer)
   printTaskUrgency(tagsArr)
   printDatesUrgency(task)
   printDescription(task, taskDetailsContainer)
   printTaskTags(tagsArr)
+}
+function printIsDone(task,taskDetailsContainer){
+  const isDone = taskDetailsContainer.querySelector('.is-done-print')
+  if (task.isDone === true){
+    isDone.style.display = 'block'
+  } else {
+    isDone.style.display = 'none'
+  }
 }
 
 function printTaskAndProjectName(task,proj,taskDetailsContainer){

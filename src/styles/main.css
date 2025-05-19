@@ -149,6 +149,15 @@ label[for='show-comp-toggle']{
   grid-auto-rows: 50px;
 }
 
+.task-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.task-container > *{
+  flex-grow: 0;
+  flex-basis: content;
+}
 .task {
   color: white;
   background: black;
@@ -161,6 +170,16 @@ label[for='show-comp-toggle']{
 }
 .name-container {
   background-color: #cdb904;
+}
+
+.name-sub-container{
+  display: flex;
+  justify-content: space-between;
+}
+
+.name-sub-container > input[text]{
+  flex-grow: 0;
+  flex-basis: auto;
 }
 .urgency-container {
   background-color: white;

@@ -90,11 +90,19 @@ function generateTaskList(tasksArr){
     const tasksList = document.querySelector('.task-list')
     tasksList.innerHTML='' //reset
     tasksArr.forEach(task => {
+        const taskDivContainer = document.createElement('div')
         const taskDiv = document.createElement('div')
+        const checkbox = document.createElement('input')
+        taskDivContainer.classList.add('task-container')
+        checkbox.type = 'checkbox'
+        checkbox.classList.add('is-done')
+        checkbox.checked = task.isDone
         taskDiv.textContent = task.name
         taskDiv.dataset.taskId = task.taskId
         taskDiv.classList.add('task') 
-        tasksList.appendChild(taskDiv)
+        taskDivContainer.appendChild(taskDiv)
+        taskDivContainer.appendChild(checkbox)
+        tasksList.appendChild(taskDivContainer)
     })
     document.addEventListener("DOMContentLoaded", taskSection.loadTaskSelectEventListeners())
 }
