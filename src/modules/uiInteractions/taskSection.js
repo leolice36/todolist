@@ -24,12 +24,13 @@ function loadTaskSelectEventListeners(){
     const tasks = document.querySelectorAll('.task')
     tasks.forEach(task => {
         task.addEventListener('click', () => {
-            selectTask(task.dataset.taskId,task.textContent)
+            selectTask(task.dataset.taskId)
+            
       })
     });
   }
 
-function selectTask(taskId,taskName){
+function selectTask(taskId){
     if (tasksStateObj.isCreatingNewTask){ //disables when creating task
       return
     } else {
@@ -40,12 +41,39 @@ function selectTask(taskId,taskName){
       tasksStateObj.selectedTask=taskId
       randomUtilities.findTaskObj(taskId)
       printTaskDetailsInUI(taskId)
+      styleSelectedTask()
       console.log(tasksStateObj.selectedTask)
     }
   }
 
-function updateTaskIsDone(){
-  
+
+function styleSelectedTask(){
+  const tasks = document.querySelectorAll('.task')
+  tasks.forEach(task => {
+    if (task.dataset.taskId == tasksStateObj.selectedTask){
+      task.style.backgroundColor = 'red'
+    } else {
+      task.style.backgroundColor = 'black'
+    }
+  })
+}
+
+function initializeCheckBoxEventlistener(checkbox){
+  checkbox.addEventListener('change', (event) => {
+    if(event.target.checked){
+      console.log(`${checkbox.dataset.taskId} is Done`)
+      updateTaskObjIsDone(checkbox.dataset.taskId,true)
+      selectTask(checkbox.dataset.taskId)
+    } else {
+      console.log(`${checkbox.dataset.taskId} is unchecked`)
+      updateTaskObjIsDone(checkbox.dataset.taskId,false)
+      selectTask(checkbox.dataset.taskId)
+    }
+  })
+}
+
+function updateTaskObjIsDone(taskId,boolean){
+  editTask(taskId,{isDone: boolean})
 }
 
 function loadTaskDetailsHandler(){
@@ -213,4 +241,4 @@ function printDescription(task, taskDetailsContainer){
   const taskDescription = taskDetailsContainer.querySelector('#notes-area')
   taskDescription.value = task.description
 }
-export default {tasksStateObj,printFilteredTasks,loadTaskSelectEventListeners,loadTaskDetailsHandler,toggleTaskDetails}
+export default {tasksStateObj,printFilteredTasks,loadTaskSelectEventListeners,loadTaskDetailsHandler,toggleTaskDetails,initializeCheckBoxEventlistener}

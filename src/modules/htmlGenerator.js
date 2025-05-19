@@ -97,6 +97,8 @@ function generateTaskList(tasksArr){
         checkbox.type = 'checkbox'
         checkbox.classList.add('is-done')
         checkbox.checked = task.isDone
+        checkbox.dataset.taskId = task.taskId
+        taskSection.initializeCheckBoxEventlistener(checkbox)
         taskDiv.textContent = task.name
         taskDiv.dataset.taskId = task.taskId
         taskDiv.classList.add('task') 
