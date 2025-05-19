@@ -1,3 +1,4 @@
+import randomUtilities from '../randomUtilities'
 import {Project, Task, Tag} from './classes'
 import registry from './registry'
 function addProject(name = "New Project", makeDate = undefined, startDate=undefined, endDate=undefined, description="Add project description") {
@@ -57,6 +58,20 @@ function editTask(taskId, changesArr){
     }
     
     return task.taskId
+}
+
+function deleteTask(taskId){
+    const task =randomUtilities.getTaskObj(taskId)
+    if (task === undefined){
+        console.log('Invalid task ID')
+        return
+    } else {
+        console.log('runs')
+        const index = registry.allTasks.findIndex(task => task.taskId === taskId)
+        if (index !== -1){
+            registry.allTasks.splice(index,1)
+        }
+    }
 }
 
 function addTag(name){
@@ -151,4 +166,4 @@ function removeTag(taskId,tagId){
     }
 }
 
-export {addProject, editProject, addTask, editTask, addTag, editTag,tagUrgency,tagOther,removeTag,deleteProject}
+export {addProject, editProject, addTask, editTask,deleteTask, addTag, editTag,tagUrgency,tagOther,removeTag,deleteProject}

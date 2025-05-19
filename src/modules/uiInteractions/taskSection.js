@@ -1,5 +1,5 @@
 import registry from "../coreFunction/registry";
-import {deleteProject, removeTag, addProject, editProject, addTask, editTask, addTag, editTag,tagUrgency,tagOther} from "../coreFunction/basicFunction"
+import {deleteTask, deleteProject, removeTag, addProject, editProject, addTask, editTask, addTag, editTag,tagUrgency,tagOther} from "../coreFunction/basicFunction"
 import htmlGenerator from "../htmlGenerator";
 import filter from "../coreFunction/filter";
 import randomUtilities from "../randomUtilities";
@@ -11,6 +11,7 @@ const tasksStateObj = {
     selectedTask: null,
     shownTasks:[],
     isCreatingNewTask: false,
+    isEditingNewlyCreatedTask: false,
     latestTaskId: null,
 }
 
@@ -84,8 +85,8 @@ function loadTaskDetailsHandler(){
   saveBtn.addEventListener('click', saveTaskBtnSequence)
 
 
-  // const cancelBtn = document.querySelector('.cancel-changes')
-  // cancelBtn.addEventListener('click', cancelBtnSequence)
+  const cancelBtn = document.querySelector('.cancel-task-changes')
+  cancelBtn.addEventListener('click', cancelTaskBtnSequence)
 }
 
 function addTaskBtnSequence(){
@@ -105,8 +106,11 @@ function addTaskBtnSequence(){
   console.table(task)
   projectSection.selectProj(projId)
   tasksStateObj.isCreatingNewTask = false
+  tasksStateObj.isEditingNewlyCreatedTask = true
   selectTask(newTaskId)
 }
+
+
 
 //UI only disable, actual disable happens on the select function
 function disableTaskSelect(){
@@ -116,16 +120,33 @@ function disableTaskSelect(){
   });
 }
 
-//not needed for now
+
+function cancelTaskBtnSequence(){
+  const detailsContainer = document.querySelector('.task-details-container')
+  if (getComputedStyle(detailsContainer).display === 'block'){
+    toggleTaskDetails()
+  }
+  if (tasksStateObj.isEditingNewlyCreatedTask === true){
+    deleteTask(tasksStateObj.latestTaskId)
+    tasksStateObj.isEditingNewlyCreatedTask === false
+  }
+  printFilteredTasks()
+}
+
 function clearTaskDetailsUI(){
 
 }
+
+
 
 function saveTaskBtnSequence(){
   saveTaskChanges(tasksStateObj.selectedTask)
   const detailsContainer = document.querySelector('.task-details-container')
   if (getComputedStyle(detailsContainer).display === 'block'){
     toggleTaskDetails()
+  }
+  if (tasksStateObj.isEditingNewlyCreatedTask === true){
+    tasksStateObj.isEditingNewlyCreatedTask === false
   }
   printFilteredTasks()
   
