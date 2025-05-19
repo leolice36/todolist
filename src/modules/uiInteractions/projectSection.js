@@ -92,10 +92,14 @@ const projectDetailsState = {
       return
     } else {
       const projDetailsDiv = document.querySelector('.project-details')
+      const taskDetailsDiv = document.querySelector('.task-details-container')
       projectDetailsState.selectedProjectId = projId
       console.log(projectDetailsState.selectedProjectId)
       if (projDetailsDiv.style.display = 'none'){
         toggleProjectDetails()
+      }
+      if(taskDetailsDiv.style.display = 'block'){
+        taskSection.toggleTaskDetails()
       }
       printProjDetailsInUI(projId)
       updateProjIdInFilterObj(projId)
