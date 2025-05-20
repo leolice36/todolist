@@ -110,6 +110,7 @@ function addTaskBtnSequence(){
   projectSection.selectProj(projId)
   tasksStateObj.isCreatingNewTask = false
   tasksStateObj.isEditingNewlyCreatedTask = true
+  toggleDeleteBtn()
   selectTask(newTaskId)
 }
 
@@ -127,9 +128,11 @@ function cancelTaskBtnSequence(){
   if (getComputedStyle(detailsContainer).display === 'block'){
     toggleTaskDetails()
   }
+
   if (tasksStateObj.isEditingNewlyCreatedTask === true){
+    toggleDeleteBtn()
     deleteTask(tasksStateObj.latestTaskId)
-    tasksStateObj.isEditingNewlyCreatedTask === false
+    tasksStateObj.isEditingNewlyCreatedTask = false
   }
   printFilteredTasks()
 }
@@ -140,10 +143,14 @@ function deleteTaskBtnSequence(){
     toggleTaskDetails()
   }
   if (tasksStateObj.isEditingNewlyCreatedTask === true){
-    deleteTask(tasksStateObj.latestTaskId)
-    tasksStateObj.isEditingNewlyCreatedTask === false
+    
   }
   printFilteredTasks()
+}
+
+function toggleDeleteBtn(){
+  const deleteBtn = document.querySelector('.delete-task')
+  deleteBtn.disabled = !deleteBtn.disabled
 }
 
 function clearTaskDetailsUI(){
@@ -153,14 +160,17 @@ function clearTaskDetailsUI(){
 function saveTaskBtnSequence(){
   saveTaskChanges(tasksStateObj.selectedTask)
   const detailsContainer = document.querySelector('.task-details-container')
+  const deleteBtn = document.querySelector('.delete-task')
   if (getComputedStyle(detailsContainer).display === 'block'){
     toggleTaskDetails()
   }
   if (tasksStateObj.isEditingNewlyCreatedTask === true){
-    tasksStateObj.isEditingNewlyCreatedTask === false
+    tasksStateObj.isEditingNewlyCreatedTask = false
+  } 
+  if (deleteBtn.disabled){
+    toggleDeleteBtn()
   }
   printFilteredTasks()
-  
 }
 
 function toggleTaskDetails(){
