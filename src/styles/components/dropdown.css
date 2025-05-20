@@ -77,9 +77,3 @@
 :root {
 	--theme: #00885a;
 }
-body {
-	padding: 2em;
-	background: #e6e8ea;
-	font-size: 1.125em;
-	line-height: 1.5;
-}

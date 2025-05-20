@@ -87,6 +87,9 @@ function loadTaskDetailsHandler(){
 
   const cancelBtn = document.querySelector('.cancel-task-changes')
   cancelBtn.addEventListener('click', cancelTaskBtnSequence)
+
+  const deleteBtn = document.querySelector('.delete-task')
+  cancelBtn.addEventListener('click', deleteTaskBtnSequence)
 }
 
 function addTaskBtnSequence(){
@@ -110,8 +113,6 @@ function addTaskBtnSequence(){
   selectTask(newTaskId)
 }
 
-
-
 //UI only disable, actual disable happens on the select function
 function disableTaskSelect(){
   const tasks = document.querySelectorAll('.task')
@@ -133,11 +134,21 @@ function cancelTaskBtnSequence(){
   printFilteredTasks()
 }
 
+function deleteTaskBtnSequence(){
+  const detailsContainer = document.querySelector('.task-details-container')
+  if (getComputedStyle(detailsContainer).display === 'block'){
+    toggleTaskDetails()
+  }
+  if (tasksStateObj.isEditingNewlyCreatedTask === true){
+    deleteTask(tasksStateObj.latestTaskId)
+    tasksStateObj.isEditingNewlyCreatedTask === false
+  }
+  printFilteredTasks()
+}
+
 function clearTaskDetailsUI(){
 
 }
-
-
 
 function saveTaskBtnSequence(){
   saveTaskChanges(tasksStateObj.selectedTask)
