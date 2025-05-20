@@ -39,6 +39,10 @@ function selectTask(taskId){
       if (getComputedStyle(detailsContainer).display === 'none'){
         toggleTaskDetails()
       }
+      const deleteTaskModal = document.querySelector('.task-delete-modal')
+      if (getComputedStyle(deleteTaskModal).display === 'flex'){
+        toggleDeleteTaskModal()
+      }
       tasksStateObj.selectedTask=taskId
       randomUtilities.findTaskObj(taskId)
       printTaskDetailsInUI(taskId)
@@ -89,7 +93,13 @@ function loadTaskDetailsHandler(){
   cancelBtn.addEventListener('click', cancelTaskBtnSequence)
 
   const deleteBtn = document.querySelector('.delete-task')
-  cancelBtn.addEventListener('click', deleteTaskBtnSequence)
+  deleteBtn.addEventListener('click', deleteTaskBtnSequence)
+
+  const confirmDeleteBtn = document.querySelector('.confirm-delete-task')
+  confirmDeleteBtn.addEventListener('click', confirmDeleteBtnSequence)
+
+  const cancelDeleteBtn = document.querySelector('.cancel-delete-task')
+  cancelDeleteBtn.addEventListener('click', cancelDeleteBtnSequence)
 }
 
 function addTaskBtnSequence(){
@@ -114,14 +124,21 @@ function addTaskBtnSequence(){
   selectTask(newTaskId)
 }
 
-//UI only disable, actual disable happens on the select function
-function disableTaskSelect(){
-  const tasks = document.querySelectorAll('.task')
-  tasks.forEach(task => {
-    task.style.cursor = 'default'
-  });
+function saveTaskBtnSequence(){
+  saveTaskChanges(tasksStateObj.selectedTask)
+  const detailsContainer = document.querySelector('.task-details-container')
+  const deleteBtn = document.querySelector('.delete-task')
+  if (getComputedStyle(detailsContainer).display === 'block'){
+    toggleTaskDetails()
+  }
+  if (tasksStateObj.isEditingNewlyCreatedTask === true){
+    tasksStateObj.isEditingNewlyCreatedTask = false
+  } 
+  if (deleteBtn.disabled){
+    toggleDeleteBtn()
+  }
+  printFilteredTasks()
 }
-
 
 function cancelTaskBtnSequence(){
   const detailsContainer = document.querySelector('.task-details-container')
@@ -138,39 +155,52 @@ function cancelTaskBtnSequence(){
 }
 
 function deleteTaskBtnSequence(){
+  toggleDeleteBtn()
+  toggleDeleteTaskModal()
+  console.log('delete')
+}
+
+
+function confirmDeleteBtnSequence(){
+  deleteTask(tasksStateObj.selectedTask)
+  tasksStateObj.selectedTask = null
   const detailsContainer = document.querySelector('.task-details-container')
+  const deleteBtn = document.querySelector('.delete-task')
   if (getComputedStyle(detailsContainer).display === 'block'){
     toggleTaskDetails()
   }
-  if (tasksStateObj.isEditingNewlyCreatedTask === true){
-    
+  if (deleteBtn.disabled){
+    toggleDeleteBtn()
   }
   printFilteredTasks()
+}
+function cancelDeleteBtnSequence(){
+  console.log('NAH')
+  toggleDeleteTaskModal()
+  toggleDeleteBtn()
+}
+function toggleDeleteTaskModal(){
+  const deleteTaskModal = document.querySelector('.task-delete-modal')
+  if (getComputedStyle(deleteTaskModal).display === 'none'){
+    deleteTaskModal.style.display = 'flex'
+  } else if (getComputedStyle(deleteTaskModal).display === 'flex'){
+    deleteTaskModal.style.display = 'none'
+  } else {
+    console.log('may mali')
+  }
+}
+
+//UI only disable, actual disable happens on the select function
+function disableTaskSelect(){
+  const tasks = document.querySelectorAll('.task')
+  tasks.forEach(task => {
+    task.style.cursor = 'default'
+  });
 }
 
 function toggleDeleteBtn(){
   const deleteBtn = document.querySelector('.delete-task')
   deleteBtn.disabled = !deleteBtn.disabled
-}
-
-function clearTaskDetailsUI(){
-
-}
-
-function saveTaskBtnSequence(){
-  saveTaskChanges(tasksStateObj.selectedTask)
-  const detailsContainer = document.querySelector('.task-details-container')
-  const deleteBtn = document.querySelector('.delete-task')
-  if (getComputedStyle(detailsContainer).display === 'block'){
-    toggleTaskDetails()
-  }
-  if (tasksStateObj.isEditingNewlyCreatedTask === true){
-    tasksStateObj.isEditingNewlyCreatedTask = false
-  } 
-  if (deleteBtn.disabled){
-    toggleDeleteBtn()
-  }
-  printFilteredTasks()
 }
 
 function toggleTaskDetails(){
@@ -283,4 +313,4 @@ function printDescription(task, taskDetailsContainer){
   const taskDescription = taskDetailsContainer.querySelector('#notes-area')
   taskDescription.value = task.description
 }
-export default {tasksStateObj,printFilteredTasks,loadTaskSelectEventListeners,loadTaskDetailsHandler,toggleTaskDetails,initializeCheckBoxEventlistener}
+export default {toggleDeleteTaskModal,tasksStateObj,printFilteredTasks,loadTaskSelectEventListeners,loadTaskDetailsHandler,toggleTaskDetails,initializeCheckBoxEventlistener}

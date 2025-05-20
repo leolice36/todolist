@@ -167,7 +167,29 @@ label[for='show-comp-toggle']{
   background: #5104cd;
   grid-area: details;
   display: none;
+  position: relative;
 }
+
+.task-delete-modal {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Modal content */
+.modalContent {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+}
+
 .name-container {
   background-color: #cdb904;
 }
@@ -236,3 +258,4 @@ label[for='show-comp-toggle']{
   background-color: black;
   color: white;
 }
+

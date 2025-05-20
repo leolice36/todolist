@@ -39,6 +39,7 @@ const projectDetailsState = {
       console.log('ALL PROJECTS')
       if (getComputedStyle(projDetailsDiv).display === 'block'){toggleProjectDetails()}
       projectDetailsState.selectedProjectId = null
+      taskSection.tasksStateObj.selectedTask = null
       console.log(projectDetailsState.selectedProjectId)
       updateProjIdInFilterObj('none')
       taskSection.printFilteredTasks()
@@ -93,13 +94,18 @@ const projectDetailsState = {
     } else {
       const projDetailsDiv = document.querySelector('.project-details')
       const taskDetailsDiv = document.querySelector('.task-details-container')
+      const deleteTaskModal = document.querySelector('.task-delete-modal')
       projectDetailsState.selectedProjectId = projId
+      taskSection.tasksStateObj.selectedTask = null
       console.log(projectDetailsState.selectedProjectId)
       if (projDetailsDiv.style.display = 'none'){
         toggleProjectDetails()
       }
       if(taskDetailsDiv.style.display = 'block'){
         taskSection.toggleTaskDetails()
+      }
+      if (getComputedStyle(deleteTaskModal).display === 'flex'){
+        taskSection.toggleDeleteTaskModal()
       }
       printProjDetailsInUI(projId)
       updateProjIdInFilterObj(projId)
