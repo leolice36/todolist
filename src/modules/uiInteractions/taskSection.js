@@ -13,6 +13,7 @@ const tasksStateObj = {
     isCreatingNewTask: false,
     isEditingNewlyCreatedTask: false,
     latestTaskId: null,
+    latestTagId: null,
 }
 
 function printFilteredTasks(){
@@ -112,6 +113,9 @@ function loadTaskDetailsHandler(){
 
   const confirmCreateTag = document.querySelector('.create-tag')
   confirmCreateTag.addEventListener('click', confirmCreateTagBtnSequence)
+
+  const cancelCreateTag = document.querySelector('.cancel-create-tag')
+  cancelCreateTag.addEventListener('click', cancelCreateTagBtnSequence)
 }
 
 function addTaskBtnSequence(){
@@ -203,11 +207,9 @@ function toggleCreateTagDiv(){
   if (getComputedStyle(createTagDiv).display === 'none' && getComputedStyle(tags).display === 'flex'){
     createTagDiv.style.display = 'flex'
     tags.style.display = 'none'
-    console.log('toggles1')
   } else if (getComputedStyle(createTagDiv).display === 'flex' && getComputedStyle(tags).display === 'none'){
     createTagDiv.style.display = 'none'
     tags.style.display = 'flex'
-    console.log('toggles1')
   } else {
     console.log('may mali')
   }
@@ -215,8 +217,32 @@ function toggleCreateTagDiv(){
 
 function confirmCreateTagBtnSequence(){
   toggleCreateTagDiv()
+  const addedTagName = document.querySelector('.create-tag-input')
+  
+  const newTagId = addTag(addedTagName.value)
+  tasksStateObj.latestTagId = newTagId
+  updateTagListInUI()
+  addedTagName.value = ''
 }
 
+function cancelCreateTagBtnSequence(){
+  toggleCreateTagDiv()
+  const addedTagName = document.querySelector('.create-tag-input')
+  addedTagName.value = ''
+}
+
+function updateTagListInUI(){
+  const otherTags = randomUtilities.getOtherTags(); // get updated data
+  const newChoices = otherTags.map(tag => ({
+    value: tag.tagId,
+    label: tag.name
+  }));
+
+  const instance = externalLibraries.choiceJSInstances.otherTagger;
+
+  instance.clearChoices(); // removes existing UI choices
+  instance.setChoices(newChoices, 'value', 'label', true); // true = reset choices
+}
 
 
 function toggleDeleteTaskModal(){
