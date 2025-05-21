@@ -14,7 +14,7 @@ body * {
   height: 100vh;
   width: 100vw;
   display: grid; 
-  grid-template-columns: 200px 1fr;
+  grid-template-columns: 250px 1fr;
   grid-template-rows: 100px 1fr;
   grid-template-areas: 
     'header header'
@@ -170,7 +170,7 @@ label[for='show-comp-toggle']{
   position: relative;
 }
 
-.task-delete-modal {
+.task-delete-modal, .project-delete-modal {
   position: absolute;
   top: 0;
   left: 0;
@@ -182,7 +182,6 @@ label[for='show-comp-toggle']{
   justify-content: center;
 }
 
-/* Modal content */
 .modalContent {
   background-color: white;
   padding: 20px;
@@ -237,6 +236,7 @@ label[for='show-comp-toggle']{
 .project-details{
   background-color: white;
   display: none;
+  position: relative;
 }
 
 .project-details-header {

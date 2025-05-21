@@ -31,6 +31,13 @@ function deleteProject(projectId){
             registry.allProjects.splice(index,1)
         }
     }
+    const tasksOfProj = registry.allTasks.filter(task => task.projectId.includes(projectId))
+    for (let i = registry.allTasks.length-1; i >= 0; i--){
+        if(tasksOfProj.includes(registry.allTasks[i])){
+            const taskIdToDel = registry.allTasks[i].taskId
+            deleteTask(taskIdToDel)
+        }
+    }
 }
 
 function addTask(projectId, name = "New Task", makeDate = undefined, startDate = undefined, endDate = undefined, description = "Add task description"){

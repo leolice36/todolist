@@ -174,6 +174,7 @@ function confirmDeleteBtnSequence(){
   }
   printFilteredTasks()
 }
+
 function cancelDeleteBtnSequence(){
   console.log('NAH')
   toggleDeleteTaskModal()

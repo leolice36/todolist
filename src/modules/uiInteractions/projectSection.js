@@ -21,6 +21,15 @@ const projectDetailsState = {
   
     const cancelBtn = document.querySelector('.cancel-changes')
     cancelBtn.addEventListener('click', cancelBtnSequence)
+
+    const deleteBtn = document.querySelector('.delete-project')
+    deleteBtn.addEventListener('click', deleteProjBtnSequence)
+
+    const confirmDeleteBtn = document.querySelector('.confirm-delete-project')
+    confirmDeleteBtn.addEventListener('click', confirmDeleteBtnSequence)
+
+    const cancelDeleteBtn = document.querySelector('.cancel-delete-project')
+    cancelDeleteBtn.addEventListener('click', cancelDeleteBtnSequence)
   }
   
   function loadProjectSelectEventListeners(){
@@ -34,16 +43,18 @@ const projectDetailsState = {
 
   function loadAllProjectsEventListeners(){
     const allProjects = document.querySelector('.all-projects-container')
-    const projDetailsDiv = document.querySelector('.project-details')
-    allProjects.addEventListener('click', () => {
-      console.log('ALL PROJECTS')
+    allProjects.addEventListener('click', showAllProjects)
+  }
+
+  function showAllProjects(){
+    console.log('ALL PROJECTS')
+      const projDetailsDiv = document.querySelector('.project-details')
       if (getComputedStyle(projDetailsDiv).display === 'block'){toggleProjectDetails()}
       projectDetailsState.selectedProjectId = null
       taskSection.tasksStateObj.selectedTask = null
       console.log(projectDetailsState.selectedProjectId)
       updateProjIdInFilterObj('none')
       taskSection.printFilteredTasks()
-    })
   }
   
   function addProjBtnSequence(){
@@ -65,13 +76,18 @@ const projectDetailsState = {
     toggleProjectDetails()
     saveProjDetails(projectDetailsState.selectedProjectId)
     const proj = registry.allProjects.find(p => p.projectId === projectDetailsState.selectedProjectId)
+    const taskDetailsContainer = document.querySelector('.task-details-container')
     console.table(proj)
     htmlGenerator.generateProjectList(registry.allProjects)
     if (projectDetailsState.isCreatingNewProj){
       toggleAddProjectBtn()
     }
     projectDetailsState.isCreatingNewProj = false
-    taskSection.toggleTaskDetails()
+
+    if (getComputedStyle(taskDetailsContainer).display === 'block'){
+      taskSection.toggleTaskDetails()
+    }
+    
     enableProjectSelect()
   }
   
@@ -87,7 +103,49 @@ const projectDetailsState = {
     enableProjectSelect()
 
   }
-  
+
+  function deleteProjBtnSequence(){
+    console.log('DELETE PROJ')
+    toggleDeleteProjectModal()
+    toggleDeleteBtn()
+    
+  }
+  function confirmDeleteBtnSequence(){
+    deleteProject(projectDetailsState.selectedProjectId)
+    projectDetailsState.selectedProjectId = null
+    const detailsContainer = document.querySelector('.project-details')
+    const deleteBtn = document.querySelector('.delete-project')
+    if (getComputedStyle(detailsContainer).display === 'block'){
+      toggleProjectDetails()
+    }
+    if (deleteBtn.disabled){
+      toggleDeleteBtn()
+    }
+    htmlGenerator.generateProjectList(registry.allProjects)
+    showAllProjects()
+  }
+
+  function cancelDeleteBtnSequence(){
+    console.log('NAH')
+    toggleDeleteProjectModal()
+    toggleDeleteBtn()
+  }
+
+  function toggleDeleteProjectModal(){
+    const deleteProjectModal = document.querySelector('.project-delete-modal')
+    if (getComputedStyle(deleteProjectModal).display === 'none'){
+      deleteProjectModal.style.display = 'flex'
+    } else if (getComputedStyle(deleteProjectModal).display === 'flex'){
+      deleteProjectModal.style.display = 'none'
+    } else {
+      console.log('may mali')
+    }
+  }
+  function toggleDeleteBtn(){
+    const deleteBtn = document.querySelector('.delete-project')
+    deleteBtn.disabled = !deleteBtn.disabled
+  }
+
   function selectProj(projId,projName){
     if (projectDetailsState.isCreatingNewProj){ //disables when creating project
       return
