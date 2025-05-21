@@ -125,6 +125,11 @@ label[for='show-comp-toggle']{
 .tags-container{
   background-color: rgb(255, 255, 255);
   width: 500px;
+  display: block;
+  position: relative;
+}
+
+.tags-sub{
   display: flex;
 }
 
@@ -138,6 +143,10 @@ label[for='show-comp-toggle']{
 .tags-area-filter {
   background: #5104cd;
   min-width: 300px;
+}
+
+.create-tag-container{
+  display: none;
 }
 .task-list-container{
   background: #04cdc3;

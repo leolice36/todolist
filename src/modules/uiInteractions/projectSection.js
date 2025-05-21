@@ -49,6 +49,10 @@ const projectDetailsState = {
   function showAllProjects(){
     console.log('ALL PROJECTS')
       const projDetailsDiv = document.querySelector('.project-details')
+      const detailsContainer = document.querySelector('.task-details-container')
+      if (getComputedStyle(detailsContainer).display === 'block'){
+        taskSection.toggleTaskDetails()
+      }
       if (getComputedStyle(projDetailsDiv).display === 'block'){toggleProjectDetails()}
       projectDetailsState.selectedProjectId = null
       taskSection.tasksStateObj.selectedTask = null
@@ -111,6 +115,7 @@ const projectDetailsState = {
     
   }
   function confirmDeleteBtnSequence(){
+    toggleDeleteProjectModal()
     deleteProject(projectDetailsState.selectedProjectId)
     projectDetailsState.selectedProjectId = null
     const detailsContainer = document.querySelector('.project-details')
@@ -153,6 +158,8 @@ const projectDetailsState = {
       const projDetailsDiv = document.querySelector('.project-details')
       const taskDetailsDiv = document.querySelector('.task-details-container')
       const deleteTaskModal = document.querySelector('.task-delete-modal')
+      const createTagDiv = document.querySelector('.create-tag-container')
+      const tags = document.querySelector('.tags-sub')
       projectDetailsState.selectedProjectId = projId
       taskSection.tasksStateObj.selectedTask = null
       console.log(projectDetailsState.selectedProjectId)
@@ -164,6 +171,9 @@ const projectDetailsState = {
       }
       if (getComputedStyle(deleteTaskModal).display === 'flex'){
         taskSection.toggleDeleteTaskModal()
+      }
+      if (getComputedStyle(createTagDiv).display === 'flex' && getComputedStyle(tags).display === 'none'){
+        taskSection.toggleCreateTagDiv()
       }
       printProjDetailsInUI(projId)
       updateProjIdInFilterObj(projId)

@@ -36,6 +36,8 @@ function selectTask(taskId){
       return
     } else {
       const detailsContainer = document.querySelector('.task-details-container')
+      const createTagDiv = document.querySelector('.create-tag-container')
+      const tags = document.querySelector('.tags-sub')
       if (getComputedStyle(detailsContainer).display === 'none'){
         toggleTaskDetails()
       }
@@ -43,6 +45,10 @@ function selectTask(taskId){
       if (getComputedStyle(deleteTaskModal).display === 'flex'){
         toggleDeleteTaskModal()
       }
+      if (getComputedStyle(createTagDiv).display === 'flex' && getComputedStyle(tags).display === 'none'){
+        toggleCreateTagDiv()
+      }
+
       tasksStateObj.selectedTask=taskId
       randomUtilities.findTaskObj(taskId)
       printTaskDetailsInUI(taskId)
@@ -100,6 +106,12 @@ function loadTaskDetailsHandler(){
 
   const cancelDeleteBtn = document.querySelector('.cancel-delete-task')
   cancelDeleteBtn.addEventListener('click', cancelDeleteBtnSequence)
+
+  const createTag = document.querySelector('.add-tag')
+  createTag.addEventListener('click', createTagBtnSequence)
+
+  const confirmCreateTag = document.querySelector('.create-tag')
+  confirmCreateTag.addEventListener('click', confirmCreateTagBtnSequence)
 }
 
 function addTaskBtnSequence(){
@@ -160,7 +172,6 @@ function deleteTaskBtnSequence(){
   console.log('delete')
 }
 
-
 function confirmDeleteBtnSequence(){
   deleteTask(tasksStateObj.selectedTask)
   tasksStateObj.selectedTask = null
@@ -180,6 +191,34 @@ function cancelDeleteBtnSequence(){
   toggleDeleteTaskModal()
   toggleDeleteBtn()
 }
+
+function createTagBtnSequence(){
+  toggleCreateTagDiv()
+}
+
+function toggleCreateTagDiv(){
+  const createTagDiv = document.querySelector('.create-tag-container')
+  const tags = document.querySelector('.tags-sub')
+
+  if (getComputedStyle(createTagDiv).display === 'none' && getComputedStyle(tags).display === 'flex'){
+    createTagDiv.style.display = 'flex'
+    tags.style.display = 'none'
+    console.log('toggles1')
+  } else if (getComputedStyle(createTagDiv).display === 'flex' && getComputedStyle(tags).display === 'none'){
+    createTagDiv.style.display = 'none'
+    tags.style.display = 'flex'
+    console.log('toggles1')
+  } else {
+    console.log('may mali')
+  }
+}
+
+function confirmCreateTagBtnSequence(){
+  toggleCreateTagDiv()
+}
+
+
+
 function toggleDeleteTaskModal(){
   const deleteTaskModal = document.querySelector('.task-delete-modal')
   if (getComputedStyle(deleteTaskModal).display === 'none'){
@@ -314,4 +353,4 @@ function printDescription(task, taskDetailsContainer){
   const taskDescription = taskDetailsContainer.querySelector('#notes-area')
   taskDescription.value = task.description
 }
-export default {toggleDeleteTaskModal,tasksStateObj,printFilteredTasks,loadTaskSelectEventListeners,loadTaskDetailsHandler,toggleTaskDetails,initializeCheckBoxEventlistener}
+export default {toggleTaskDetails, toggleCreateTagDiv,toggleDeleteTaskModal,tasksStateObj,printFilteredTasks,loadTaskSelectEventListeners,loadTaskDetailsHandler,toggleTaskDetails,initializeCheckBoxEventlistener}
