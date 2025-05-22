@@ -36,9 +36,9 @@ function isDoneToggleSequence(){
     const isPressed = isDoneToggle.classList.contains('is-pressed')
 
     if (isPressed){
-        localFilterObj.isDone = false
-    } else {
         localFilterObj.isDone = 'none'
+    } else {
+        localFilterObj.isDone = false
     }
     Object.assign(filter.filterObj,localFilterObj)
     // console.table(filter.filterObj)
