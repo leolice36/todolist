@@ -13,6 +13,7 @@ import filter from './coreFunction/filter';
 
 
 function startUp(){
+  
   generateDefaults()
   generateTagSectionInTask(registry.allTags,'task-2')
   generateUrgencySectionInTask('task-2')
