@@ -11,11 +11,13 @@ import taskSection from "./taskSection";
 
 const localFilterObj = {
     // isDone: 'none',
-    // timeFilter:'none',
+    // timeFilter: 'none',
     // urgencyFilter: 'none',
     // tagFilter: {},
     // projectFilter: 'none',
 }
+
+const dateFilterObj = {dateType:'doDate'};
 
 function loadFilterHandlers(){
     const filterBtn = document.querySelector('.filter-btn')
@@ -23,6 +25,12 @@ function loadFilterHandlers(){
 
     const isDoneToggle = document.querySelector('#show-comp-toggle')
     isDoneToggle.addEventListener('click', isDoneToggleSequence)
+
+    const doDueToggle = document.querySelector('#do-due-toggle')
+    doDueToggle.addEventListener('click', doDueToggleSequence)
+
+    const dropdownContainer = document.querySelector('.example-dropdown');
+    dropdownContainer.addEventListener('click', handleDropdown);
 }
 
 function filterBtnSequence(){
@@ -41,12 +49,52 @@ function isDoneToggleSequence(){
         localFilterObj.isDone = false
     }
     Object.assign(filter.filterObj,localFilterObj)
-    // console.table(filter.filterObj)
-    // console.table(localFilterObj)
     taskSection.printFilteredTasks()
 }
 
-function getFilterValues(){
+function handleDropdown(e){
+    const dropdownContainer = document.querySelector('.example-dropdown');
+    if (e.target.matches('[data-toggle-trigger-off]')) {
+        const selectedText = e.target.textContent.trim();
+        const toggleButton = dropdownContainer.querySelector('.example-dropdown-button');
+        toggleButton.textContent = selectedText;
+        console.log(randomUtilities.toCamelCase(selectedText))
+        const filterValue = randomUtilities.toCamelCase(selectedText)
 
+        if (filterValue != 'none'){
+            dateFilterObj.period = filterValue;           
+        }else if(filterValue == 'none'){
+            randomUtilities.emptyObject(dateFilterObj)
+            localFilterObj.timeFilter = 'none'
+        }
+
+        if('dateType' in dateFilterObj){
+            localFilterObj.timeFilter = dateFilterObj
+            Object.assign(filter.filterObj,localFilterObj)
+            taskSection.printFilteredTasks()
+        }
+
+        console.table(dateFilterObj)
+        console.table(localFilterObj)
+    }
+}
+
+function doDueToggleSequence(){
+    const doDueToggle = document.querySelector('#do-due-toggle')
+    const isPressed = doDueToggle.classList.contains('is-pressed')
+
+    if (isPressed){
+        dateFilterObj.dateType = 'dueDate'
+    } else {
+        dateFilterObj.dateType = 'doDate'
+    }
+
+    if('period' in dateFilterObj){
+        localFilterObj.timeFilter = dateFilterObj
+        Object.assign(filter.filterObj,localFilterObj)
+        taskSection.printFilteredTasks()
+    }
+    console.table(dateFilterObj)
+    console.table(localFilterObj)
 }
 export default {loadFilterHandlers}
