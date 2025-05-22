@@ -8,6 +8,8 @@ import { generateDefaults } from './coreFunction/defaultObjs';
 import externalLibraries from './externalLibraries';
 import taskSection from './uiInteractions/taskSection';
 import randomUtilities from './randomUtilities';
+import filterSection from './uiInteractions/filterSection';
+import filter from './coreFunction/filter';
 
 
 function startUp(){
@@ -22,6 +24,7 @@ function startUp(){
   externalLibraries.initializeChoicesJs()
   projectSection.loadProjectDetailsHandler()
   projectSection.loadAllProjectsEventListeners()
+  filterSection.loadFilterHandlers()
   taskSection.loadTaskDetailsHandler()
 }
 
