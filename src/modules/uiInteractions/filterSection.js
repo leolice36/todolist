@@ -58,21 +58,23 @@ function handleDropdown(e){
         const selectedText = e.target.textContent.trim();
         const toggleButton = dropdownContainer.querySelector('.example-dropdown-button');
         toggleButton.textContent = selectedText;
-        console.log(randomUtilities.toCamelCase(selectedText))
         const filterValue = randomUtilities.toCamelCase(selectedText)
+        console.log(filterValue)
 
         if (filterValue != 'none'){
-            dateFilterObj.period = filterValue;           
+            dateFilterObj.period = filterValue;
+            if(!('dateType' in dateFilterObj)){
+                doDueToggleSequence()
+            }
+            localFilterObj.timeFilter = dateFilterObj
         }else if(filterValue == 'none'){
             randomUtilities.emptyObject(dateFilterObj)
             localFilterObj.timeFilter = 'none'
         }
+        
+        Object.assign(filter.filterObj,localFilterObj)
+        taskSection.printFilteredTasks()   
 
-        if('dateType' in dateFilterObj){
-            localFilterObj.timeFilter = dateFilterObj
-            Object.assign(filter.filterObj,localFilterObj)
-            taskSection.printFilteredTasks()
-        }
 
         console.table(dateFilterObj)
         console.table(localFilterObj)
