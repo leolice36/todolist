@@ -58,7 +58,6 @@ function selectTask(taskId){
     }
   }
 
-
 function styleSelectedTask(){
   const tasks = document.querySelectorAll('.task')
   tasks.forEach(task => {
@@ -238,10 +237,12 @@ function updateTagListInUI(){
     label: tag.name
   }));
 
-  const instance = externalLibraries.choiceJSInstances.otherTagger;
-
-  instance.clearChoices(); // removes existing UI choices
-  instance.setChoices(newChoices, 'value', 'label', true); // true = reset choices
+  const taskInstance = externalLibraries.choiceJSInstances.otherTagger;
+  const filterInstance = externalLibraries.choiceJSInstances.otherFilter;
+  taskInstance.clearChoices(); // removes existing UI choices
+  taskInstance.setChoices(newChoices, 'value', 'label', true); // true = reset choices
+  filterInstance.clearChoices(); // removes existing UI choices
+  filterInstance.setChoices(newChoices, 'value', 'label', true); // true = reset choices
 }
 
 
