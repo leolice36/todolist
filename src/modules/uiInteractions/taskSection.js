@@ -17,8 +17,9 @@ const tasksStateObj = {
 }
 
 function printFilteredTasks(){
-    const filteredArr = filter.filterAll(filter.filterObj)
-    htmlGenerator.generateTaskList(filteredArr)
+  const filteredArr = filter.filterAll(filter.filterObj)
+  htmlGenerator.generateTaskList(filteredArr)
+
 }
 
 //just need to hook up the HTML generator for task details

@@ -151,8 +151,10 @@ label[for='show-comp-toggle']{
 .task-list-container{
   background: #04cdc3;
   grid-area: list;
+  position: relative;
 }
 .task-list {
+  
   background: white;
   display: grid;
   grid-auto-rows: 50px;
@@ -268,3 +270,15 @@ label[for='show-comp-toggle']{
   color: white;
 }
 
+.no-results{
+  font-size: 5em;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: none;
+  align-items: center;
+  justify-content: center; 
+}

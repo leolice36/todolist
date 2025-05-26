@@ -61,13 +61,29 @@ function initializeChoicesJs(){
     searchEnabled: false,
     itemSelectText: '',
     placeholder: true,
-    placeholderValue: 'Urgency',
+    placeholderValue: 'Tag Urgency',
     shouldSort:false,
     choices: urgencyTags.map(tag => ({
       value: tag.tagId,
       label: tag.name
     }))
   })
+  choiceJSInstances.urgencyFilter = new Choices('#urgency-select-filter', {
+    searchEnabled: false,
+    itemSelectText: '',
+    placeholder: true,
+    placeholderValue: '',
+    shouldSort:false,
+    choices: urgencyTags.map(tag => ({
+      value: tag.tagId,
+      label: tag.name
+    }))
+  })
+  // const deselectOption = document.createElement('option');
+  // deselectOption.value = 'none'
+  // deselectOption.textContent = 'None'
+
+
   const otherTags = randomUtilities.getOtherTags()
   choiceJSInstances.otherTagger = new Choices('#tag-select-task', {
     removeItemButton: true,

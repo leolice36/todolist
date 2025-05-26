@@ -12,12 +12,12 @@ import filterSection from './uiInteractions/filterSection';
 import filter from './coreFunction/filter';
 
 
-function startUp(){
-  
+function startUp(){ 
   generateDefaults()
-  generateTagSectionInTask(registry.allTags,'task-2')
-  generateUrgencySectionInTask('task-2')
+  generateTagSectionInTask(registry.allTags)
+  generateUrgencySectionInTask()
   generateTagSectionInFIlter(registry.allTags)
+  generateUrgencySectionInFilter()
   generateProjectList(registry.allProjects)
   generateTaskList(registry.allTasks)
   externalLibraries.initializeFlatpickr()
@@ -54,6 +54,7 @@ function generateUrgencySectionInTask(){
 
   const urgencyLevel = document.querySelector('.urgency-level')
   urgencyLevel.appendChild(urgencySelect)
+
   // uiInteractions.setupAddRemoveEventListenersForTask(taskId,urgencySelect)
 
 }
@@ -79,6 +80,19 @@ function generateTagSectionInFIlter(tagsArr){
   // filterSection.setupAddRemoveEventListenersForFilter(tagSelect)
 }
 
+function generateUrgencySectionInFilter(){
+  const urgencySelect = document.createElement('select');
+  urgencySelect.id = 'urgency-select-filter';
+  const noneOption = document.createElement('option');
+  noneOption.value = '';
+  noneOption.textContent = 'None';
+  urgencySelect.insertBefore(noneOption, urgencySelect.firstChild);
+  const urgencyLevel = document.querySelector('.urgency-level-filter')
+  urgencyLevel.appendChild(urgencySelect)
+  // uiInteractions.setupAddRemoveEventListenersForTask(taskId,urgencySelect)
+
+}
+
 function generateProjectList(projectsArr){
     const projectList = document.querySelector('.project-list')
     projectList.innerHTML='' //reset
@@ -96,7 +110,12 @@ function generateTaskList(tasksArr){
     const tasksList = document.querySelector('.task-list')
     tasksList.innerHTML='' //reset
     console.log(tasksArr)
-    if (tasksArr.length > 0 && tasksArr != 'NO RESULTS'){
+    const noResults = document.querySelector('.no-results')
+
+    if(tasksArr == 'NO RESULTS'){
+      noResults.style.display = 'flex'
+    } else if (tasksArr.length > 0 && tasksArr != 'NO RESULTS'){
+      noResults.style.display = 'none'
       tasksArr.forEach(task => {
           const taskDivContainer = document.createElement('div')
           const taskDiv = document.createElement('div')

@@ -20,8 +20,8 @@ const localFilterObj = {
 const dateFilterObj = {dateType:'doDate'};
 
 function loadFilterHandlers(){
-    const filterBtn = document.querySelector('.filter-btn')
-    filterBtn.addEventListener('click', filterBtnSequence)
+    // const filterBtn = document.querySelector('.filter-btn')
+    // filterBtn.addEventListener('click', filterBtnSequence)
 
     const isDoneToggle = document.querySelector('#show-comp-toggle')
     isDoneToggle.addEventListener('click', isDoneToggleSequence)
@@ -34,6 +34,9 @@ function loadFilterHandlers(){
 
     const tagSelect = document.querySelector('#tag-select-filter');
     setupAddRemoveEventListenersForFilter(tagSelect)
+
+    const urgencySelect = document.querySelector('#urgency-select-filter');
+    setupAddRemoveEventListenersForUrgency(urgencySelect)
 }
 
 function filterBtnSequence(){
@@ -106,7 +109,6 @@ function doDueToggleSequence(){
 function setupAddRemoveEventListenersForFilter(tagSelect){
     tagSelect.addEventListener('addItem', function(event){
       const tagId = event.detail.value
-      const tag = registry.allTags.find(t => t.tagId === tagId)
       localFilterObj.tagFilter.push(tagId)
       Object.assign(filter.filterObj,localFilterObj)
       taskSection.printFilteredTasks()
@@ -119,5 +121,29 @@ function setupAddRemoveEventListenersForFilter(tagSelect){
       Object.assign(filter.filterObj,localFilterObj)
       taskSection.printFilteredTasks()
       console.log('filter for', event.detail.label, 'was removed')})
-  }
+}
+
+function setupAddRemoveEventListenersForUrgency(urgencySelect){
+    urgencySelect.addEventListener('addItem', function(event){
+        const tagId = event.detail.value
+    
+        if (event.detail.value == ''){
+            localFilterObj.urgencyFilter = 'none'
+            console.log('deselect')
+        } else{
+            localFilterObj.urgencyFilter = tagId
+            console.log('added')
+        }
+        Object.assign(filter.filterObj,localFilterObj)
+        taskSection.printFilteredTasks()
+    })
+    urgencySelect.addEventListener('removeItem', function(event){
+    if (event.detail.value == ''){
+        console.log('none was removed,something was selected')
+    } else{
+        console.log('removed')
+    }
+    
+    })
+}
 export default {loadFilterHandlers}
