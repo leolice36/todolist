@@ -66,4 +66,7 @@ function addEventListenerToUrgency(taskId,urgencySelect){
       })
   }
 
-export default {setupAddRemoveEventListenersForTask,addEventListenerToUrgency}
+
+  
+
+export default {addEventListenerToUrgency}

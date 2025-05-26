@@ -13,7 +13,7 @@ const localFilterObj = {
     // isDone: 'none',
     // timeFilter: 'none',
     // urgencyFilter: 'none',
-    // tagFilter: {},
+    tagFilter: [],
     // projectFilter: 'none',
 }
 
@@ -31,6 +31,9 @@ function loadFilterHandlers(){
 
     const dropdownContainer = document.querySelector('.example-dropdown');
     dropdownContainer.addEventListener('click', handleDropdown);
+
+    const tagSelect = document.querySelector('#tag-select-filter');
+    setupAddRemoveEventListenersForFilter(tagSelect)
 }
 
 function filterBtnSequence(){
@@ -99,4 +102,22 @@ function doDueToggleSequence(){
     console.table(dateFilterObj)
     console.table(localFilterObj)
 }
+
+function setupAddRemoveEventListenersForFilter(tagSelect){
+    tagSelect.addEventListener('addItem', function(event){
+      const tagId = event.detail.value
+      const tag = registry.allTags.find(t => t.tagId === tagId)
+      localFilterObj.tagFilter.push(tagId)
+      Object.assign(filter.filterObj,localFilterObj)
+      taskSection.printFilteredTasks()
+      console.log('filtering for', event.detail.label)
+    })
+    tagSelect.addEventListener('removeItem', function(event){
+      const tagId = event.detail.value
+      const indexOfRemovedId = localFilterObj.tagFilter.indexOf(tagId)
+      localFilterObj.tagFilter.splice(indexOfRemovedId,1)
+      Object.assign(filter.filterObj,localFilterObj)
+      taskSection.printFilteredTasks()
+      console.log('filter for', event.detail.label, 'was removed')})
+  }
 export default {loadFilterHandlers}

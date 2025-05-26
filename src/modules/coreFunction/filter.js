@@ -17,7 +17,7 @@ const filterObj = {
   isDone: 'none',
   timeFilter:'none',
   urgencyFilter: 'none',
-  tagFilter: {},
+  tagFilter: [],
   projectFilter: 'none',
 }
 

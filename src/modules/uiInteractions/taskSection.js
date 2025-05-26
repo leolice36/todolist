@@ -363,9 +363,7 @@ function printTaskTags(tagsArr){
   const otherTags = tagsArr.filter(tag => tag.type === 'other')
   
   const otherTagsValues = []
-  otherTags.forEach(tag => {
-    otherTagsValues.push(tag.tagId)
-  })
+  otherTags.forEach(tag => {otherTagsValues.push(tag.tagId)})
   if (otherTags.length > 0){
     externalLibraries.choiceJSInstances.otherTagger.removeActiveItems()
     externalLibraries.choiceJSInstances.otherTagger.setChoiceByValue(otherTagsValues)

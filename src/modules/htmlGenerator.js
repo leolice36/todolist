@@ -34,8 +34,6 @@ function generateTagSectionInTask(tagsArr){
   const tagSelect = document.createElement('select');
   tagSelect.id = 'tag-select-task';
   tagSelect.multiple = true;
-
-
   // tagsArr.forEach(tag => {
   //   if (tag.type === 'other'){
   //     const option = document.createElement('option')
@@ -75,6 +73,10 @@ function generateTagSectionInFIlter(tagsArr){
   });
   const tagsArea = document.querySelector('.tags-area-filter')
   tagsArea.appendChild(tagSelect)
+
+
+  //add setup event listener here
+  // filterSection.setupAddRemoveEventListenersForFilter(tagSelect)
 }
 
 function generateProjectList(projectsArr){
