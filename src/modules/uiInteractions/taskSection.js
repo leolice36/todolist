@@ -136,7 +136,10 @@ function addTaskBtnSequence(){
   tasksStateObj.selectedTask = tasksStateObj.latestTaskId
   const task = randomUtilities.getTaskObj(newTaskId)
   console.table(task)
-  projectSection.selectProj(projId)
+  if (projId){
+    console.log(projId)
+    projectSection.selectProj(projId)
+  }
   tasksStateObj.isCreatingNewTask = false
   tasksStateObj.isEditingNewlyCreatedTask = true
   toggleDeleteBtn()

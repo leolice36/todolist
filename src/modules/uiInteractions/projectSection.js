@@ -106,7 +106,7 @@ const projectDetailsState = {
     projectDetailsState.isCreatingNewProj = false
 
     enableProjectSelect()
-
+    showAllProjects()
   }
 
   function deleteProjBtnSequence(){
@@ -203,14 +203,16 @@ const projectDetailsState = {
     });
   }
   
-  function printProjDetailsInUI(projId){
+  function printProjDetailsInUI(projId){  
     const proj = registry.allProjects.find(p => p.projectId === projId)
-    const projName = document.querySelector('input.project-details-header')
-    const projDescription = document.querySelector('#project-description')
-    projName.value = proj.name
-    externalLibraries.flatpickrInstances.startDate.setDate(proj.startDate)
-    externalLibraries.flatpickrInstances.endDate.setDate(proj.endDate)
-    projDescription.value = proj.description
+    if (proj){
+      const projName = document.querySelector('input.project-details-header')
+      const projDescription = document.querySelector('#project-description')
+      projName.value = proj.name
+      externalLibraries.flatpickrInstances.startDate.setDate(proj.startDate)
+      externalLibraries.flatpickrInstances.endDate.setDate(proj.endDate)
+      projDescription.value = proj.description
+    }
   }
   
   function toggleProjectDetails(){
