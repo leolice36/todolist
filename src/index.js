@@ -7,7 +7,6 @@ import filter from './modules/coreFunction/filter'
 import { subDays, addDays, formatISO, parseISO, isToday, isTomorrow, isThisWeek, isThisMonth, isPast } from 'date-fns';
 import htmlGenerator from "./modules/htmlGenerator"
 import externalLibraries from "./modules/externalLibraries"
-import uiInteractions from "./modules/uiInteractions/uiInteractions"
 import projectSection from "./modules/uiInteractions/projectSection"
 import randomUtilities from "./modules/randomUtilities"
 
