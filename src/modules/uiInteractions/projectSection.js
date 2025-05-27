@@ -5,6 +5,7 @@ import externalLibraries from '../externalLibraries';
 import htmlGenerator from '../htmlGenerator';
 import taskSection from "./taskSection";
 import filter from "../coreFunction/filter";
+import localStorageManager from "../localStorageManager";
 const projectDetailsState = {
     latestProjectId: null,
     selectedProjectId: null,
@@ -243,6 +244,7 @@ const projectDetailsState = {
   function saveProjDetails(projId){
     const projChangesObj = createProjChangesObj()
     editProject(projId, projChangesObj)
+    localStorageManager.saveData()
   }
   
   function createProjChangesObj(){

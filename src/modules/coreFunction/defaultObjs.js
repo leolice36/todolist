@@ -11,7 +11,7 @@ function generateDefaults(){
     registry.allProjects.push(defaultProj)
 
     for (let i = 0; i < 3; i++){
-        const defaultTask = new Task(true, defaultProj.projectId, `New Task ${i+1}`, todayISO, todayISO, todayISO, "Default task on initialize", defaultProj.projectId)
+        const defaultTask = new Task(false, defaultProj.projectId, `New Task ${i+1}`, todayISO, todayISO, todayISO, "Default task on initialize", defaultProj.projectId)
         registry.allTasks.push(defaultTask)
     }
 

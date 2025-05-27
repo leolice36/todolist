@@ -7,6 +7,8 @@ import externalLibraries from "../externalLibraries";
 import Choices from "choices.js";
 import flatpickr from "flatpickr";
 import projectSection from "./projectSection";
+import localStorageManager from "../localStorageManager";
+
 const tasksStateObj = {
     selectedTask: null,
     shownTasks:[],
@@ -81,6 +83,7 @@ function initializeCheckBoxEventlistener(checkbox){
       updateTaskObjIsDone(checkbox.dataset.taskId,false)
       selectTask(checkbox.dataset.taskId)
     }
+    localStorageManager.saveData()
   })
 }
 
@@ -223,6 +226,7 @@ function confirmCreateTagBtnSequence(){
   tasksStateObj.latestTagId = newTagId
   updateTagListInUI()
   addedTagName.value = ''
+  localStorageManager.saveData()
 }
 
 function cancelCreateTagBtnSequence(){
@@ -285,6 +289,7 @@ function toggleTaskDetails(){
 function saveTaskChanges(taskId){
   const changes = createTaskChangesObj()
   editTask(taskId,changes)
+  localStorageManager.saveData()
 }
 
 function createTaskChangesObj(){
