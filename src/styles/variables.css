@@ -1,0 +1,14 @@
+:root{
+    /* COLORS */
+    --shadow: rgba(13, 0, 77, 0.25);
+    --amethyst: #512eab;
+    --mist-purple: #edecf6;
+
+    /* CORNER RADIUS */
+    --round-cap: 10px;
+
+
+    /* FONTS SIZE*/
+    --section-header: 23.04px;
+    --regular: 400;
+}

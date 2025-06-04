@@ -95,11 +95,21 @@ function generateProjectList(projectsArr){
     const projectList = document.querySelector('.project-list')
     projectList.innerHTML='' //reset
     projectsArr.forEach(project => {
+        const projEntryContainer = document.createElement('div')
+        const svgContainer = document.createElement('div')
         const projectDiv = document.createElement('div')
+        projEntryContainer.classList.add('entry-container')
+        svgContainer.classList.add('svg-container')
+        svgContainer.innerHTML = `<svg width="5" height="5" viewBox="0 0 5 5" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="2.5" cy="2.5" r="2.5" fill="#512EAB"/>
+          </svg>`
+
         projectDiv.textContent = project.name
         projectDiv.dataset.projectId = project.projectId
         projectDiv.classList.add('project') 
-        projectList.appendChild(projectDiv)
+        projEntryContainer.appendChild(svgContainer)
+        projEntryContainer.appendChild(projectDiv)
+        projectList.appendChild(projEntryContainer)
     })
     document.addEventListener("DOMContentLoaded", projectSection.loadProjectSelectEventListeners())
 }
