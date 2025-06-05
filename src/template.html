@@ -43,24 +43,27 @@
                 </div>
             </div>
 
-            <div class="project-details">
-                <input type="text" class="project-details-header" placeholder="Enter Project name">
+            <div class="project-details panel">
+                <input type="text" class="project-details-header small-input" placeholder="Enter Project name">
                 <div class="start-date-container">
-                    <label for="start-date">Start date:</label>
-                    <input type="text" id="start-date" placeholder="Pick a date" />
+                    <label for="start-date">Start</label>
+                    <input class=" start-date small-input" type="text" id="start-date" placeholder="Pick start date" />
                 </div>
                 <div class="end-date-container">
-                    <label for="end-date">End date:</label>
-                    <input type="text" id="end-date" placeholder="Pick a date" />
+                    <label for="end-date">End</label>
+                    <input class="end-date small-input" type="text" id="end-date" placeholder="Pick end date" />
                 </div>
-                <div class="project-description panel">
+                <div class="sub-divider"></div>
+                <div class="project-description">
                     <div>Description</div>
-                    <textarea name="project-description" id="project-description"></textarea>
+                    <textarea class = "small-input" name="project-description" id="project-description"></textarea>
                 </div>
                 <div class="project-details-btn-container">
-                    <button class="save-project">save</button>
-                    <button class="cancel-changes">cancel</button>
-                    <button class="delete-project">delete</button>
+                    <div class="save-cancel-group">
+                        <button class="save-project edit-buttons">save</button>
+                        <button class="cancel-changes edit-buttons">cancel</button>
+                    </div>
+                    <button class="delete-project edit-buttons">delete</button>
                 </div>
                 <div class="project-delete-modal">
                     <div class="modalContent">
@@ -216,9 +219,9 @@
                     <textarea name="notes-area" id="notes-area"></textarea>
                 </div>
                 <div class="task-details-btn-container">
-                    <button class="save-task">save</button>
-                    <button class="cancel-task-changes">cancel</button>
-                    <button class="delete-task">delete</button>
+                    <button class="save-task edit-buttons">save</button>
+                    <button class="cancel-task-changes edit-buttons">cancel</button>
+                    <button class="delete-task edit-buttons">delete</button>
                 </div>
                 <div class="task-delete-modal">
                     <div class="modalContent">

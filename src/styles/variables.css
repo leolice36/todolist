@@ -1,9 +1,16 @@
 :root{
     /* COLORS */
     --shadow: rgba(13, 0, 77, 0.25);
+    --light-shadow: rgba(13, 0, 77, 0.15);
     --amethyst: #512eab;
     --mist-purple: #edecf6;
-
+    --darker-mist: #D2CDDE;
+    --beri-light: #fbfafc;
+    --subtler: #E1DBEB;
+    --pearson-purple: #0d004d;
+    --light-torq-tint: #b3f2f1;
+    --light-amber-tint: #FFF7D8;
+    --fuschia-tint: #efa0e7;
     /* CORNER RADIUS */
     --round-cap: 10px;
 
@@ -11,4 +18,7 @@
     /* FONTS SIZE*/
     --section-header: 23.04px;
     --regular: 400;
+    --top-input: 19.2px;
+    --smaller: 13.33px;
+    --smallest: 11px;
 }

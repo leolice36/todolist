@@ -12,6 +12,7 @@ body {
 
 body * {
   font-family: "Plus Jakarta Sans", sans-serif;
+  color: var(--pearson-purple);
 }
 .main-container {
   height: 812px;
@@ -56,6 +57,7 @@ body * {
   grid-area: projects;
   display: grid;
   grid-template-rows: 1fr 1fr;
+  gap: 15px;
 }
 
 
@@ -79,15 +81,22 @@ body * {
   background: var(--shadow);
   height: 1.5px;
   border-radius: var(--round-cap);
-  margin-bottom: 5px;
+  margin-bottom: 8px;
+}
+.sub-divider {
+  background: var(--subtler);
+  height: 1px;
+  border-radius: var(--round-cap);
+  margin-bottom: 8px;
 }
 .project-list-container{
   display: grid;
-  grid-template-rows: 26px 1fr;
+  grid-template-rows: 28px 1fr;
 }
 
 .all-projects-container{
   cursor: pointer;
+  
 }
 
 .project-list{
@@ -95,7 +104,7 @@ body * {
   display: grid;
   grid-auto-rows: 25px;
   overflow-y: auto;
-  gap: 2px;
+  gap: 5px;
   padding-left: 3px;
 }
 
@@ -138,6 +147,7 @@ body * {
   'list details'
   ;
   gap: 15px;
+  /* margin-left: 20px; */
 }
 
 .task-header{
@@ -305,26 +315,71 @@ label[for='show-comp-toggle']{
   background-color: white;
   display: none;
   position: relative;
+  padding-top: 17px;
+  padding-right: 20px;
 }
 
 .project-details-header {
-  background: #cdb904;
+  height: 28px;
+  font-size: var(--top-input);
+  font-weight: var(--regular);
+  padding: 5px;
+  margin-bottom: 5px;
+}
+
+.start-date-container, .end-date-container{
+  font-size: var(--smaller);
+  display: flex;
+  align-items: center;
 }
 .start-date-container{
-  display: flex;
-  background-color: #5104cd;
+  margin-bottom: 2px;
+}
+input.start-date, input.end-date{
+  padding-left: 5px;
+}
+
+input.start-date::placeholder, input.end-date::placeholder{
+ color: var(--darker-mist);
+}
+
+label[for="start-date"]{
+  width: 50px;
+  padding-left: 3px;
 }
 .end-date-container{
-  display: flex;
-  background-color: #0454cd;
+  margin-bottom: 15px;
+}
+label[for="end-date"]{
+  width: 50px;
+  padding-left: 3px;
+}
+
+input.small-input, textarea.small-input{
+  background-color: var(--beri-light);
+  border-radius: 5px;
+  border: var(--subtler) solid 1px;
+}
+
+textarea.small-input {
+  margin-bottom: 6px;
 }
 #project-description{
-  background-color: #fcf7ce;
-  height: 300px;
+  
+  height: 200px;
+  width: 100%;
+  font-size: var(--smallest);
+  padding: 7px 13px 7px 13px;
+  resize: none;
 }
 .project-description :first-child {
-  background-color: black;
-  color: white;
+  font-size: var(--smaller);
+  margin-bottom: 6px;
+}
+
+.project-details-btn-container{
+  display: flex;
+  justify-content: space-between;
 }
 
 .no-results{

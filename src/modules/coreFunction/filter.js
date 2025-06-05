@@ -132,12 +132,17 @@ function byDate(period,dateType,arrayOfTasks = registry.allTasks){
 }
 
 function byIsDone(taskArray = registry.allTasks, condition){
-  const filteredArr = taskArray.filter(task => task.isDone === condition);
-    if (filteredArr.length > 0){
-      return filteredArr
-    } else {
-      console.log(`Nothing DONE`)
-    }
+  console.log(taskArray)
+  if (taskArray != 'NO RESULTS'){
+    const filteredArr = taskArray.filter(task => task.isDone === condition);
+      if (filteredArr.length > 0){
+        return filteredArr
+      } else {
+        console.log(`Nothing DONE`)
+      }
+  } else {
+    console.log('works but something wrong')
+  }
 }
 function filterAll(filterObject, taskArray = registry.allTasks){
   const filterObj = filterObject
