@@ -11,6 +11,7 @@
     --light-torq-tint: #b3f2f1;
     --light-amber-tint: #FFF7D8;
     --fuschia-tint: #efa0e7;
+    --torquoise: #56e2e1;
     /* CORNER RADIUS */
     --round-cap: 10px;
 
@@ -21,4 +22,7 @@
     --top-input: 19.2px;
     --smaller: 13.33px;
     --smallest: 11px;
+
+    /* SHADOW */
+    --light-shadow: 1px 1px 0px rgba(13, 0, 77, 0.15);
 }

@@ -158,16 +158,25 @@ body * {
 
 .filter-container{
   grid-area: filter;
-  display: grid;
-  grid-template-columns: 40px 1fr;
+  display: flex;
+  flex-direction: column;
 }
 
 .filter-header-container{
-  background-color: grey;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    font-size: var(--section-header);
+    height: 33px;
+    margin-bottom: 6px;
 }
 
 .filters{
   background-color: rgb(73, 94, 58);
+  display: flex;
+  flex-direction: column;
+}
+.filter-top{
   display: flex;
 }
 

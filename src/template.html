@@ -81,93 +81,94 @@
 
         <section class="tasks-main">
 
-            <div class="filter-container">
+            <div class="filter-container panel">
                 <div class="filter-header-container">
-                    <h5 class="filter-header section-header">filter</h5>
+                    <h5 class="filter-header section-header">Filter</h5>
                 </div>
+                <div class="header-divider"></div>
                 <div class="filters">
-                    <div class="show-completed-container">
-                        <button 
-                            type="button" class="example-switchbox is-pressed" 
-                            data-toggle-class="is-pressed" 
-                            id="show-comp-toggle" 
-                            aria-pressed="false" 
-                            title="Toggle this box">
-                                <span class="example-switchbox-yes">yes</span>
-                                <span class="example-switchbox-no">no</span>
-                                <span class="sr-only">Toggle</span>
-                        </button>
-                        <label for="show-comp-toggle">SHOW COMPLETED</label>
-                    </div>
-                    <div class="do-due-container">
-                        <div class="do-due-toggle-container">
-                            <button 
-                            type="button" class="example-switchbox" 
-                            data-toggle-class="is-pressed" 
-                            id="do-due-toggle" 
-                            aria-pressed="false" 
-                            title="Toggle this box">
-
-                                <span class="example-switchbox-yes">due</span>
-                                <span class="example-switchbox-no">do</span>
-                                <span class="sr-only">Toggle</span>
+                    <div class="filter-top">
+                        <div class="show-completed-container">
+                            <button
+                                type="button" class="example-switchbox is-pressed"
+                                data-toggle-class="is-pressed"
+                                data-toggle-target="#showCompleteLabel"
+                                id="show-comp-toggle"
+                                aria-pressed="true"
+                                title="Toggle this box">
+                                    <span class="example-switchbox-yes"></span>
+                                    <span class="example-switchbox-no"></span>
+                                    <span class="sr-only">Toggle</span>
                             </button>
+                            <label id=showCompleteLabel for="show-comp-toggle" class="is-pressed">SHOW COMPLETED</label>
                         </div>
-                        <div class="do-due-dropdown-container">
-                            <div class="example-dropdown">
-                                <button type="button" class="example-dropdown-button" 
-                                    data-toggle-class="is-open" 
-                                    data-toggle-target-next="" 
-                                    data-toggle-outside="" 
-                                    data-toggle-escape="">
-                                            None
-                                        </button>
-                                    <ul class="example-dropdown-list" data-toggle-state="false">
-                                    <li>
-                                        <button type="button" data-toggle-trigger-off="">
-                                            None
-                                        </button>
-                                    </li>
-                                    <li>
-                                        <button type="button" data-toggle-trigger-off="">
-                                            Today
-                                        </button>
-                                    </li>
-                                    <li>
-                                        <button type="button" data-toggle-trigger-off="">
-                                            Tomorrow
-                                        </button>
-                                    </li>
-                                    <li>
-                                        <button type="button" data-toggle-trigger-off="">
-                                            This Week
-                                        </button>
-                                    </li>
-                                    <li>
-                                        <button type="button" data-toggle-trigger-off="">
-                                            This Month
-                                        </button>
-                                    </li>
-                                    <li>
-                                        <button type="button" data-toggle-trigger-off="">
-                                            Past
-                                        </button>
-                                    </li>
-                                </ul>
-                            </div>                                
+                        <div class="do-due-container">
+                            <div class="do-due-toggle-container">
+                                <button
+                                type="button" class="example-switchbox"
+                                data-toggle-class="is-pressed"
+                                id="do-due-toggle"
+                                aria-pressed="false"
+                                title="Toggle this box">
+                                    <span class="example-switchbox-yes">due</span>
+                                    <span class="example-switchbox-no">do</span>
+                                    <span class="sr-only">Toggle</span>
+                                </button>
+                            </div>
+                            <div class="do-due-dropdown-container">
+                                <div class="example-dropdown">
+                                    <button type="button" class="example-dropdown-button"
+                                        data-toggle-class="is-open"
+                                        data-toggle-target-next=""
+                                        data-toggle-outside=""
+                                        data-toggle-escape="">
+                                                None
+                                            </button>
+                                        <ul class="example-dropdown-list" data-toggle-state="false">
+                                        <li>
+                                            <button type="button" data-toggle-trigger-off="">
+                                                None
+                                            </button>
+                                        </li>
+                                        <li>
+                                            <button type="button" data-toggle-trigger-off="">
+                                                Today
+                                            </button>
+                                        </li>
+                                        <li>
+                                            <button type="button" data-toggle-trigger-off="">
+                                                Tomorrow
+                                            </button>
+                                        </li>
+                                        <li>
+                                            <button type="button" data-toggle-trigger-off="">
+                                                This Week
+                                            </button>
+                                        </li>
+                                        <li>
+                                            <button type="button" data-toggle-trigger-off="">
+                                                This Month
+                                            </button>
+                                        </li>
+                                        <li>
+                                            <button type="button" data-toggle-trigger-off="">
+                                                Past
+                                            </button>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="urgency-container">
+                            <div class="urgency-label">Urgency</div>
+                            <div class="urgency-level-filter"></div>
                         </div>
                     </div>
                     <div class="tags-container">                        
                         <div class="tags-label">TAGS</div>
                         <div class="tags-area-filter"></div>
                     </div>
-                    <div class="urgency-container">
-                        <div class="urgency-label">Urgency</div>
-                        <div class="urgency-level-filter"></div>
-                    </div>
-                    <!-- <div class="filter-btn-container">
-                        <button class="filter-btn">Apply</button>
-                    </div> -->
+
                 </div>
             </div>
             <div class="task-list-container panel">

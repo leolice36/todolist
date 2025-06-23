@@ -1,12 +1,13 @@
 .example-switchbox {
 	position: relative;
 	display: inline-block;
-	width: 3em;
-	height: 1em;
-	padding: .125em;
+	width: 24px;
+	height: 13px;
+	padding: 0px;
+	padding-left: 1.5px;
 	overflow: hidden;
 	box-sizing: content-box;
-	border: 2px solid darkgrey;
+	border: 1.5px solid var(--darker-mist);
 	outline: none;
 	border-radius: .75em;
 	background-color: white;
@@ -14,15 +15,17 @@
 	vertical-align: middle;
 	cursor: pointer;
 	transition: .15s ease-out;
+	box-shadow: var(--light-shadow);
 }
 .example-switchbox::before {
 	position: relative;
 	z-index: 2;
 	display: block;
-	width: 1em;
-	height: 1em;
+	width: 9px;
+	height: 9px;
 	border-radius: 50%;
-	background-color: darkgrey;
+	background-color: var(--mist-purple);
+	border: 1.5px solid var(--darker-mist);
 	content: '';
 	transition: .15s ease-out;
 }
@@ -51,20 +54,19 @@
 	color: darkgrey;
 	opacity: 1;
 }
-.example-switchbox:hover,
-.example-switchbox:focus {
-	border-color: var(--theme); /* You probably need to change this! */
-	box-shadow: 0 0 .25em var(--theme); /* You probably need to change this too! */
+.example-switchbox:hover{
+
 }
-.example-switchbox:hover::before,
-.example-switchbox:focus::before {
-	background-color: var(--theme); /* You probably need to change this! */
+.example-switchbox:hover::before {
+	background-color: var(--light-torq-tint); /* You probably need to change this! */
+	border-color: var(--torquoise); /* You probably need to change this! */
 }
 
 .example-switchbox.is-pressed {
-	border-color: var(--theme); /* You probably need to change this! */
-	background-color: var(--theme); /* You probably need to change this too! */
+	border-color: var(--torquoise); /* You probably need to change this! */
+	background-color: white; /* You probably need to change this too! */
 }
+
 .example-switchbox.is-pressed .example-switchbox-yes {
 	opacity: 1;
 }
@@ -72,16 +74,16 @@
 	opacity: 0;
 }
 .example-switchbox.is-pressed::before {
-	transform: translateX(2em);
-	background-color: white;
+	transform: translateX(13px);
+	background-color: var(--light-torq-tint);
+	border-color: var(--torquoise);
 }
-.example-switchbox.is-pressed:hover,
-.example-switchbox.is-pressed:focus {
-	border-color: rgba(0,0,0,.35);
+.example-switchbox.is-pressed:hover {
+	border-color: var(--torquoise);
 }
-.example-switchbox.is-pressed:hover::before,
-.example-switchbox.is-pressed:focus::before {
-	background-color: white;
+.example-switchbox.is-pressed:hover::before {
+	background-color: var(--mist-purple);
+	border: 1.5px solid var(--darker-mist);
 }
 
 /* Only for screen readers */
@@ -98,7 +100,7 @@
 	clip-path: inset(50%);
 }
 
-/* For demo */
-:root {
-	--theme: #00885a;
+#showCompleteLabel.is-pressed {
+	color: var(--torquoise);
+	font-weight: 500;
 }
